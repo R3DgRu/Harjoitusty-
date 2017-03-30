@@ -7,51 +7,85 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="200" Margin="20,60,0,0" VerticalAlignment="Top" Width="200"/>
-        <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="200" Margin="20,400,0,0" VerticalAlignment="Top" Width="200"/>
-        <Button x:Name="button" Content="Lisää uusi" HorizontalAlignment="Left" Margin="82,280,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button1" Content="Lisää uusi" HorizontalAlignment="Left" Margin="82,620,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="82,35,0,0" TextWrapping="Wrap" Text="Helikopterit" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="110,375,0,0" TextWrapping="Wrap" Text="Akut" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="300,60,0,0" TextWrapping="Wrap" Text="nimi" VerticalAlignment="Top" Width="200"/>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="345,35,0,0" TextWrapping="Wrap" Text="Helikopterin nimi" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="360,110,0,0" TextWrapping="Wrap" Text="Sarjanumero" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="300,135,0,0" TextWrapping="Wrap" Text="sarjanro" VerticalAlignment="Top" Width="200"/>
-        <Button x:Name="button2" Content="Päivitä" HorizontalAlignment="Left" Margin="365,190,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button3" Content="Poista" HorizontalAlignment="Left" Margin="365,238,0,0" VerticalAlignment="Top" Width="63"/>
-        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="365,325,0,0" TextWrapping="Wrap" Text="Lennot" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="365,359,0,0" TextWrapping="Wrap" Text="123" VerticalAlignment="Top" Width="46"/>
-        <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="360,445,0,0" TextWrapping="Wrap" Text="Kulutusosat" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="300,490,0,0" TextWrapping="Wrap" Text="Painelaakerit" VerticalAlignment="Top"/>
-        <CheckBox x:Name="checkBox" Content="" HorizontalAlignment="Left" Margin="490,485,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="checkBox1" Content="" HorizontalAlignment="Left" Margin="490,530,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="checkBox2" Content="" HorizontalAlignment="Left" Margin="490,575,0,0" VerticalAlignment="Top" Width="81"/>
-        <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Margin="430,490,0,0" TextWrapping="Wrap" Text="55" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="300,535,0,0" TextWrapping="Wrap" Text="Moottorin hihna" VerticalAlignment="Top" SelectionChanged="textBlock9_SelectionChanged"/>
-        <TextBlock x:Name="textBlock10" HorizontalAlignment="Left" Margin="430,535,0,0" TextWrapping="Wrap" Text="76" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock11" HorizontalAlignment="Left" Margin="300,580,0,0" TextWrapping="Wrap" Text="Perähihna" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock12" HorizontalAlignment="Left" Margin="430,580,0,0" TextWrapping="Wrap" Text="121" VerticalAlignment="Top"/>
-        <Button x:Name="button4" Content="Nollaa" HorizontalAlignment="Left" Margin="365,620,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock13" HorizontalAlignment="Left" Margin="667,35,0,0" TextWrapping="Wrap" Text="Akun nimi" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Margin="600,60,0,0" TextWrapping="Wrap" Text="nimi" VerticalAlignment="Top" Width="200"/>
-        <TextBlock x:Name="textBlock14" HorizontalAlignment="Left" Margin="665,110,0,0" TextWrapping="Wrap" Text="Jännite (V)" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox3" HorizontalAlignment="Left" Margin="600,135,0,0" TextWrapping="Wrap" Text="jännite" VerticalAlignment="Top" Width="200"/>
-        <TextBlock x:Name="textBlock15" HorizontalAlignment="Left" Margin="638,185,0,0" TextWrapping="Wrap" Text="Kapasiteetti (mAh)" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox4" HorizontalAlignment="Left" Margin="600,210,0,0" TextWrapping="Wrap" Text="kapasiteetti" VerticalAlignment="Top" Width="200"/>
-        <TextBlock x:Name="textBlock16" HorizontalAlignment="Left" Margin="637,262,0,0" TextWrapping="Wrap" Text="Hankitapäivämäärä" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox5" HorizontalAlignment="Left" Margin="600,287,0,0" TextWrapping="Wrap" Text="pvm" VerticalAlignment="Top" Width="200"/>
-        <Button x:Name="button5" Content="Päivitä" HorizontalAlignment="Left" Margin="665,340,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button6" Content="Poista" HorizontalAlignment="Left" Margin="665,390,0,0" VerticalAlignment="Top" Width="63"/>
-        <TextBlock x:Name="textBlock17" HorizontalAlignment="Left" Margin="660,445,0,0" TextWrapping="Wrap" Text="Akun tiedot" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock18" HorizontalAlignment="Left" Margin="600,490,0,0" TextWrapping="Wrap" Text="Syklit" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock19" HorizontalAlignment="Left" Margin="721,490,0,0" TextWrapping="Wrap" Text="24" VerticalAlignment="Top" RenderTransformOrigin="-1.781,0.625"/>
-        <TextBlock x:Name="textBlock20" HorizontalAlignment="Left" Margin="600,535,0,0" TextWrapping="Wrap" Text="Ikä" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock21" HorizontalAlignment="Left" Margin="721,535,0,0" TextWrapping="Wrap" Text="240 päivää" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock22" HorizontalAlignment="Left" Margin="1050,35,0,0" TextWrapping="Wrap" Text="Lisää lentoja (akullista)" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox6" HorizontalAlignment="Left" Margin="1030,60,0,0" TextWrapping="Wrap" Text="lkm" VerticalAlignment="Top" Width="200"/>
-        <TextBlock x:Name="textBlock23" HorizontalAlignment="Left" Margin="1081,119,0,0" TextWrapping="Wrap" Text="Valitse helikopteri" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox7" HorizontalAlignment="Left" Margin="1030,144,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="200"/>
+    <Grid x:Name="app" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition Width="320"/>
+            </Grid.ColumnDefinitions>
 
+            <StackPanel Grid.Column="0" HorizontalAlignment="Center" Padding="20" Width="Auto">
+                <TextBlock x:Name="textBlock" Text="Helikopterit" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <ListBox x:Name="listBox" Height="225" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <Button x:Name="button" Content="Lisää uusi" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="textBlock1" Text="Akut" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <ListBox x:Name="listBox1" Height="225" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <Button x:Name="button1" Content="Lisää uusi" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" Padding="20" Width="Auto">
+                <TextBlock x:Name="textBlock2" Text="Helikopterin nimi" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <TextBox x:Name="textBox" Text="nimi" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBlock x:Name="textBlock3" Text="Sarjanumero" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <TextBox x:Name="textBox1" Text="sarjanro" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <Button x:Name="button2" Content="Päivitä" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+                <Button x:Name="button3" Content="Poista" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="textBlock4" Text="Lennot" FontSize="20" Padding="0,10,0,5" TextAlignment="Center"/>
+                <TextBlock x:Name="textBlock5" Text="123" FontSize="18" Padding="5" TextAlignment="Center"/>
+                <TextBlock x:Name="textBlock6" Text="Kulutusosat" FontSize="20" Padding="0,30,0,10" TextAlignment="Center"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="textBlock8" Text="000"/>
+                    <CheckBox x:Name="checkBox" Content="Painelaakerit" Margin="80,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="textBlock10" Text="000"/>
+                    <CheckBox x:Name="checkBox1" Content="Moottorin hihna" Margin="80,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="textBlock12" Text="000"/>
+                    <CheckBox x:Name="checkBox2" Content="Perähihna" Margin="80,0,0,0"/>
+                </StackPanel>
+                <Button x:Name="button4" Content="Nollaa" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" HorizontalAlignment="Center" Padding="20" Width="Auto">
+                <TextBlock x:Name="textBlock13" Text="Akun nimi" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <TextBox x:Name="textBox2" Text="nimi" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBlock x:Name="textBlock14" Text="Jännite (V)" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <TextBox x:Name="textBox3" Text="jännite" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBlock x:Name="textBlock15" Text="Kapasiteetti (mAh)" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <TextBox x:Name="textBox4" Text="kapasiteetti" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBlock x:Name="textBlock16" Text="Hankitapäivämäärä" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <TextBox x:Name="textBox5" Text="pvm" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <Button x:Name="button5" Content="Päivitä" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+                <Button x:Name="button6" Content="Poista" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="textBlock17" Text="Akun tiedot" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="textBlock18" Text="Syklit"/>
+                    <TextBlock x:Name="textBlock19" Text="000 " Margin="135,0,10,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="textBlock20" Text="Ikä"/>
+                    <TextBlock x:Name="textBlock21" Text="000" Margin="150,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="3" HorizontalAlignment="Center" Padding="20" Width="Auto">
+                <TextBlock x:Name="textBlock22" Text="Lisää lentoja (akullista)" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <TextBox x:Name="textBox6" Text="lkm" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBlock x:Name="textBlock23" Text="Valitse helikopteri" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <ListBox x:Name="listBox2" Height="145" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <Button x:Name="button7" Content="Lisää lentoja" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="textBlock24" Text="Lisää syklejä" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <TextBox x:Name="textBox7" Text="lkm" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBlock x:Name="textBlock25" Text="Valitse akku" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <ListBox x:Name="listBox3" Height="145" Width="225"/>
+                <Button x:Name="button8" Content="Lisää syklejä" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+        </Grid>
     </Grid>
+
 </Page>
