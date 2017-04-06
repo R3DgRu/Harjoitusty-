@@ -27,14 +27,67 @@ namespace Lentopäiväkirja
         {
             this.InitializeComponent();
 
-            // käynnistää sovelluksen hd-resoluutiolla
+            // Käynnistää sovelluksen hd-resoluutiolla
             ApplicationView.PreferredLaunchViewSize = new Size(1280, 720);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
         }
 
-        public void LuoHelikopteri()
+        // Avaa "Lisää helikopteri" -näkymän
+        private void button_Click(object sender, RoutedEventArgs e)
         {
-            //tähän canvas jotankin?  
+            Lisaa_helikopteri.Visibility = Visibility.Visible;
+            Lisaa_helikopteri_border.Visibility = Visibility.Visible;
         }
+
+        // Sulkee (peruuttaa) "Lisää helikopteri" -näkymän
+        private void button9_Click(object sender, RoutedEventArgs e)
+        {
+            Lisaa_helikopteri.Visibility = Visibility.Collapsed;
+            Lisaa_helikopteri_border.Visibility = Visibility.Collapsed;
+        }
+
+        // Avaa "Lisää akku" -näkymän
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            Lisaa_akku.Visibility = Visibility.Visible;
+            Lisaa_akku_border.Visibility = Visibility.Visible;
+        }
+
+        // Sulkee (peruuttaa) "Lisää akku" -näkymän
+        private void button31_Click(object sender, RoutedEventArgs e)
+        {
+            Lisaa_akku.Visibility = Visibility.Collapsed;
+            Lisaa_akku_border.Visibility = Visibility.Collapsed;
+        }
+
+        // Avaa "Haluatko varmasti poistaa valitun helikopterin?" -ikkunan
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            Helikopterin_poisto.Visibility = Visibility.Visible;
+            Helikopterin_poisto_border.Visibility = Visibility.Visible; 
+        }
+
+        // Sulkee helikopterin poisto popupin
+        private void button53_Click(object sender, RoutedEventArgs e)
+        {
+            Helikopterin_poisto.Visibility = Visibility.Collapsed;
+            Helikopterin_poisto_border.Visibility = Visibility.Collapsed;
+        }
+
+        // Avaa "Haluatko varmasti poistaa valitun akun?" -ikkunan
+        private void button6_Click(object sender, RoutedEventArgs e)
+        {
+            Akun_poisto.Visibility = Visibility.Visible;
+            Akun_poisto_border.Visibility = Visibility.Visible;
+        }
+
+        // Sulkee akun poisto popupin
+        private void button55_Click(object sender, RoutedEventArgs e)
+        {
+            Akun_poisto.Visibility = Visibility.Collapsed;
+            Akun_poisto_border.Visibility = Visibility.Collapsed;
+        }
+
+
     }
 }

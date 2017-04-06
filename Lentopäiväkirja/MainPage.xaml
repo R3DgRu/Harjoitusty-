@@ -5,9 +5,13 @@
     xmlns:local="using:Lentopäiväkirja"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:Lentopäiväkirja.Model"
     mc:Ignorable="d">
 
     <Grid x:Name="app" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Line Stroke="Black" X1="320" Y1="720" X2="320"/>
+        <Line Stroke="Black" X1="640" Y1="720" X2="640"/>
+        <Line Stroke="Black" X1="960" Y1="720" X2="960"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="320"/>
@@ -15,14 +19,14 @@
                 <ColumnDefinition Width="320"/>
                 <ColumnDefinition Width="320"/>
             </Grid.ColumnDefinitions>
-
+            
             <StackPanel Grid.Column="0" HorizontalAlignment="Center" Padding="20" Width="Auto">
                 <TextBlock x:Name="textBlock" Text="Helikopterit" FontSize="20" Padding="5" TextAlignment="Center"/>
                 <ListBox x:Name="listBox" Height="225" Width="225" Padding="5" Margin="0,10,0,10"/>
-                <Button x:Name="button" Content="Lisää uusi" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+                <Button x:Name="button" Content="Lisää uusi" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button_Click"/>
                 <TextBlock x:Name="textBlock1" Text="Akut" FontSize="20" Padding="5" TextAlignment="Center"/>
                 <ListBox x:Name="listBox1" Height="225" Width="225" Padding="5" Margin="0,10,0,10"/>
-                <Button x:Name="button1" Content="Lisää uusi" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+                <Button x:Name="button1" Content="Lisää uusi" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button1_Click"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" HorizontalAlignment="Center" Padding="20" Width="Auto">
@@ -31,7 +35,7 @@
                 <TextBlock x:Name="textBlock3" Text="Sarjanumero" FontSize="20" Padding="5" TextAlignment="Center"/>
                 <TextBox x:Name="textBox1" Text="sarjanro" Width="225" Padding="5" Margin="0,10,0,10"/>
                 <Button x:Name="button2" Content="Päivitä" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
-                <Button x:Name="button3" Content="Poista" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+                <Button x:Name="button3" Content="Poista" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button3_Click"/>
                 <TextBlock x:Name="textBlock4" Text="Lennot" FontSize="20" Padding="0,10,0,5" TextAlignment="Center"/>
                 <TextBlock x:Name="textBlock5" Text="123" FontSize="18" Padding="5" TextAlignment="Center"/>
                 <TextBlock x:Name="textBlock6" Text="Kulutusosat" FontSize="20" Padding="0,30,0,10" TextAlignment="Center"/>
@@ -60,7 +64,7 @@
                 <TextBlock x:Name="textBlock16" Text="Hankitapäivämäärä" FontSize="20" Padding="5" TextAlignment="Center"/>
                 <TextBox x:Name="textBox5" Text="pvm" Width="225" Padding="5" Margin="0,10,0,10"/>
                 <Button x:Name="button5" Content="Päivitä" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
-                <Button x:Name="button6" Content="Poista" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+                <Button x:Name="button6" Content="Poista" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button6_Click"/>
                 <TextBlock x:Name="textBlock17" Text="Akun tiedot" FontSize="20" Padding="5" TextAlignment="Center"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock x:Name="textBlock18" Text="Syklit"/>
@@ -86,6 +90,89 @@
             </StackPanel>
 
         </Grid>
+
+        <Border x:Name="Lisaa_helikopteri_border" BorderThickness="2" BorderBrush="Black" Width="962" Height="542" Visibility="Collapsed">
+            <Canvas x:Name="Lisaa_helikopteri" HorizontalAlignment="Center" VerticalAlignment="Center" Width="960" Height="540" Background="White" Visibility="Collapsed">
+                <Button x:Name="button9" Content="Peruuta" Padding="10" Width="80" Canvas.Left="365" Canvas.Top="460" Click="button9_Click"/>
+                <Button x:Name="button10" Content="OK" Padding="10" Width="80" Canvas.Left="510" Canvas.Top="460"/>
+                <TextBlock x:Name="textBlock7" TextWrapping="Wrap" Text="Lisää uusi helikopteri" FontSize="20" Canvas.Left="395" Canvas.Top="20"/>
+                <TextBox x:Name="textBox8" Canvas.Left="100" TextWrapping="Wrap" Text="nimi" Width="200" Canvas.Top="180"/>
+                <TextBlock x:Name="textBlock9" Canvas.Left="150" TextWrapping="Wrap" Text="Perustiedot" FontSize="20" Canvas.Top="140"/>
+                <TextBlock x:Name="textBlock11" Canvas.Left="695" TextWrapping="Wrap" Text="Korostusvärit" FontSize="20" Canvas.Top="140"/>
+                <TextBox x:Name="textBox9" Canvas.Left="100" TextWrapping="Wrap" Text="sarjanro" Width="200" Canvas.Top="240"/>
+                <Button x:Name="button11" Width="25" Height="25" Canvas.Left="670" Canvas.Top="180" Background="#f08484"/>
+                <Button x:Name="button12" Width="25" Height="25" Canvas.Left="705" Canvas.Top="180" Background="#e678a9"/>
+                <Button x:Name="button13" Width="25" Height="25" Canvas.Left="740" Canvas.Top="180" Background="#c674db"/>
+                <Button x:Name="button14" Width="25" Height="25" Canvas.Left="775" Canvas.Top="180" Background="#887ad9"/>
+                <Button x:Name="button15" Width="25" Height="25" Canvas.Left="810" Canvas.Top="180" Background="#5c9ce0"/>
+                <Button x:Name="button16" Width="25" Height="25" Canvas.Left="670" Canvas.Top="215" Background="#7bc8e0"/>
+                <Button x:Name="button17" Width="25" Height="25" Canvas.Left="705" Canvas.Top="215" Background="#73e6cf"/>
+                <Button x:Name="button18" Width="25" Height="25" Canvas.Left="740" Canvas.Top="215" Background="#6be09e"/>
+                <Button x:Name="button19" Width="25" Height="25" Canvas.Left="775" Canvas.Top="215" Background="#69bf7a"/>
+                <Button x:Name="button20" Width="25" Height="25" Canvas.Left="810" Canvas.Top="215" Background="#a1db5e"/>
+                <Button x:Name="button21" Width="25" Height="25" Canvas.Left="670" Canvas.Top="250" Background="#d1ed85"/>
+                <Button x:Name="button22" Width="25" Height="25" Canvas.Left="705" Canvas.Top="250" Background="#ebeb63"/>
+                <Button x:Name="button23" Width="25" Height="25" Canvas.Left="740" Canvas.Top="250" Background="#edd853"/>
+                <Button x:Name="button24" Width="25" Height="25" Canvas.Left="775" Canvas.Top="250" Background="#ebbe36"/>
+                <Button x:Name="button25" Width="25" Height="25" Canvas.Left="810" Canvas.Top="250" Background="#f7a80a"/>
+                <Button x:Name="button26" Width="25" Height="25" Canvas.Left="670" Canvas.Top="285" Background="#f57608"/>
+                <Button x:Name="button27" Width="25" Height="25" Canvas.Left="705" Canvas.Top="285" Background="#f25627"/>
+                <Button x:Name="button28" Width="25" Height="25" Canvas.Left="740" Canvas.Top="285" Background="#e05151"/>
+                <Button x:Name="button29" Width="25" Height="25" Canvas.Left="775" Canvas.Top="285" Background="#b8b1b8"/>
+                <Button x:Name="button30" Width="25" Height="25" Canvas.Left="810" Canvas.Top="285" Background="#757575"/>
+            </Canvas>
+        </Border>
+
+        <Border x:Name="Lisaa_akku_border" BorderThickness="2" BorderBrush="Black" Width="962" Height="542" Visibility="Collapsed">
+            <Canvas x:Name="Lisaa_akku" HorizontalAlignment="Center" VerticalAlignment="Center" Width="960" Height="540" Background="White" Visibility="Collapsed">
+                <Button x:Name="button31" Content="Peruuta" Padding="10" Width="80" Canvas.Left="365" Canvas.Top="460" Click="button31_Click"/>
+                <Button x:Name="button32" Content="OK" Padding="10" Width="80" Canvas.Left="510" Canvas.Top="460"/>
+                <TextBlock x:Name="textBlock26" TextWrapping="Wrap" Text="Lisää uusi akku" FontSize="20" Canvas.Left="413" Canvas.Top="20"/>
+                <TextBox x:Name="textBox10" Canvas.Left="100" TextWrapping="Wrap" Text="nimi" Width="200" Canvas.Top="180"/>
+                <TextBlock x:Name="textBlock27" Canvas.Left="150" TextWrapping="Wrap" Text="Perustiedot" FontSize="20" Canvas.Top="140"/>
+                <TextBlock x:Name="textBlock28" Canvas.Left="695" TextWrapping="Wrap" Text="Korostusvärit" FontSize="20" Canvas.Top="140"/>
+                <TextBox x:Name="textBox11" Canvas.Left="100" TextWrapping="Wrap" Text="hankinta pvm" Width="200" Canvas.Top="240"/>
+                <TextBox x:Name="textBox12" Canvas.Left="100" TextWrapping="Wrap" Text="jännite" Width="200" Canvas.Top="300"/>
+                <TextBox x:Name="textBox13" Canvas.Left="100" TextWrapping="Wrap" Text="kapasiteetti" Width="200" Canvas.Top="360"/>
+                <Button x:Name="button33" Width="25" Height="25" Canvas.Left="670" Canvas.Top="180" Background="#f08484"/>
+                <Button x:Name="button34" Width="25" Height="25" Canvas.Left="705" Canvas.Top="180" Background="#e678a9"/>
+                <Button x:Name="button35" Width="25" Height="25" Canvas.Left="740" Canvas.Top="180" Background="#c674db"/>
+                <Button x:Name="button36" Width="25" Height="25" Canvas.Left="775" Canvas.Top="180" Background="#887ad9"/>
+                <Button x:Name="button37" Width="25" Height="25" Canvas.Left="810" Canvas.Top="180" Background="#5c9ce0"/>
+                <Button x:Name="button38" Width="25" Height="25" Canvas.Left="670" Canvas.Top="215" Background="#7bc8e0"/>
+                <Button x:Name="button39" Width="25" Height="25" Canvas.Left="705" Canvas.Top="215" Background="#73e6cf"/>
+                <Button x:Name="button40" Width="25" Height="25" Canvas.Left="740" Canvas.Top="215" Background="#6be09e"/>
+                <Button x:Name="button41" Width="25" Height="25" Canvas.Left="775" Canvas.Top="215" Background="#69bf7a"/>
+                <Button x:Name="button42" Width="25" Height="25" Canvas.Left="810" Canvas.Top="215" Background="#a1db5e"/>
+                <Button x:Name="button43" Width="25" Height="25" Canvas.Left="670" Canvas.Top="250" Background="#d1ed85"/>
+                <Button x:Name="button44" Width="25" Height="25" Canvas.Left="705" Canvas.Top="250" Background="#ebeb63"/>
+                <Button x:Name="button45" Width="25" Height="25" Canvas.Left="740" Canvas.Top="250" Background="#edd853"/>
+                <Button x:Name="button46" Width="25" Height="25" Canvas.Left="775" Canvas.Top="250" Background="#ebbe36"/>
+                <Button x:Name="button47" Width="25" Height="25" Canvas.Left="810" Canvas.Top="250" Background="#f7a80a"/>
+                <Button x:Name="button48" Width="25" Height="25" Canvas.Left="670" Canvas.Top="285" Background="#f57608"/>
+                <Button x:Name="button49" Width="25" Height="25" Canvas.Left="705" Canvas.Top="285" Background="#f25627"/>
+                <Button x:Name="button50" Width="25" Height="25" Canvas.Left="740" Canvas.Top="285" Background="#e05151"/>
+                <Button x:Name="button51" Width="25" Height="25" Canvas.Left="775" Canvas.Top="285" Background="#b8b1b8"/>
+                <Button x:Name="button52" Width="25" Height="25" Canvas.Left="810" Canvas.Top="285" Background="#757575"/>
+            </Canvas>
+        </Border>
+
+        <Border x:Name="Helikopterin_poisto_border" BorderThickness="2" BorderBrush="Black" Width="342" Height="122" Visibility="Collapsed">
+            <Canvas x:Name="Helikopterin_poisto" HorizontalAlignment="Center" VerticalAlignment="Center" Width="340" Height="120" Background="White" Visibility="Collapsed">
+                <TextBlock x:Name="textBlock29" Canvas.Left="16" TextWrapping="Wrap" Text="Haluatko varmasti poistaa valitun helikopterin?" Canvas.Top="10"/>
+                <Button x:Name="button53" Content="Peruuta" Padding="5" Width="80" Canvas.Left="50" Canvas.Top="70" Click="button53_Click"/>
+                <Button x:Name="button54" Content="Ok" Padding="5" Width="80" Canvas.Left="210" Canvas.Top="70"/>
+            </Canvas>
+        </Border>
+
+        <Border x:Name="Akun_poisto_border" BorderThickness="2" BorderBrush="Black" Width="342" Height="122" Visibility="Collapsed">
+            <Canvas x:Name="Akun_poisto" HorizontalAlignment="Center" VerticalAlignment="Center" Width="340" Height="120" Background="White" Visibility="Collapsed">
+                <TextBlock x:Name="textBlock30" Canvas.Left="40" TextWrapping="Wrap" Text="Haluatko varmasti poistaa valitun akun?" Canvas.Top="10"/>
+                <Button x:Name="button55" Content="Peruuta" Padding="5" Width="80" Canvas.Left="50" Canvas.Top="70" Click="button55_Click"/>
+                <Button x:Name="button56" Content="Ok" Padding="5" Width="80" Canvas.Left="210" Canvas.Top="70"/>
+            </Canvas>
+        </Border>
+
     </Grid>
 
 </Page>
