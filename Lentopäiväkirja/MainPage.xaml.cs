@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lentopäiväkirja.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,8 @@ namespace Lentopäiväkirja
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public Helikopteri.HelikopteriViewModel ViewModel { get; set; }
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -30,7 +33,22 @@ namespace Lentopäiväkirja
             // Käynnistää sovelluksen hd-resoluutiolla
             ApplicationView.PreferredLaunchViewSize = new Size(1280, 720);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+
+
+        List<Model.Helikopteri> list = new List<Model.Helikopteri>();
+            list.Add(new Model.Helikopteri { nimi = "Kari" });
+            list.Add(new Model.Helikopteri { nimi = "Pasi" });
+
+            listBox.ItemsSource = list;
+
+    }
+
+        private void listBox_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Helikopteri helikopteri = (Helikopteri)e.ClickedItem;
+            textBox.Text = helikopteri.nimi;
         }
+
 
         // Avaa "Lisää helikopteri" -näkymän
         private void button_Click(object sender, RoutedEventArgs e)
