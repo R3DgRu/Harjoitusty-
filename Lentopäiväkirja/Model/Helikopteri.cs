@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,8 +26,10 @@ namespace Lentopäiväkirja.Model
         /// </summary>
         public class HelikopteriViewModel
         {
-            private List<Helikopteri> helikopterit = new List<Helikopteri>();
-            public List<Helikopteri> Helikopterit { get { return helikopterit; } }
+            //private List<Helikopteri> helikopterit = new List<Helikopteri>();
+            //public List<Helikopteri> Helikopterit { get { return helikopterit; } }
+            private ObservableCollection<Helikopteri> helikopterit = new ObservableCollection<Helikopteri>();
+            public ObservableCollection<Helikopteri> Helikopterit { get { return helikopterit; } }
 
 
             public HelikopteriViewModel()
