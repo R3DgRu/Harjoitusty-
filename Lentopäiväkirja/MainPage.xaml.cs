@@ -34,15 +34,19 @@ namespace Lentopäiväkirja
             ApplicationView.PreferredLaunchViewSize = new Size(1280, 720);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
 
+            this.ViewModel = new Helikopteri.HelikopteriViewModel();
 
-        List<Model.Helikopteri> list = new List<Model.Helikopteri>();
-            list.Add(new Model.Helikopteri { nimi = "Kari" });
-            list.Add(new Model.Helikopteri { nimi = "Pasi" });
+            // ----------------------------------------------
+        /*List<Model.Helikopteri> list = new List<Model.Helikopteri>();
+
+            list.Add(new Model.Helikopteri { nimi = "Kopu1" });
+            list.Add(new Model.Helikopteri { nimi = "Kopu2" });
 
             listBox.ItemsSource = list;
-
+            */
     }
 
+        // Lisää helikopterin nimen nimikenttään, kun sitä klikkaa listasta
         private void listBox_ItemClick(object sender, ItemClickEventArgs e)
         {
             Helikopteri helikopteri = (Helikopteri)e.ClickedItem;
@@ -105,7 +109,6 @@ namespace Lentopäiväkirja
             Akun_poisto.Visibility = Visibility.Collapsed;
             Akun_poisto_border.Visibility = Visibility.Collapsed;
         }
-
 
     }
 }

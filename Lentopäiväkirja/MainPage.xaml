@@ -33,10 +33,10 @@
             <StackPanel Grid.Column="0" HorizontalAlignment="Center" Padding="20" Width="Auto">
                 <TextBlock x:Name="textBlock" Text="Helikopterit" FontSize="20" Padding="5" TextAlignment="Center"/>
                 <ListView x:Name="listBox" Height="225" Width="225" Padding="5" Margin="0,10,0,10"
-                         ItemTemplate="{StaticResource HelikopteriListDataTemplate}"
-                         ItemClick="listBox_ItemClick"
-                         IsItemClickEnabled="True"
-                         />
+                          ItemsSource="{x:Bind ViewModel.Helikopterit}"
+                          ItemTemplate="{StaticResource HelikopteriListDataTemplate}"
+                          ItemClick="listBox_ItemClick"
+                          IsItemClickEnabled="True"/>
                 <Button x:Name="button" Content="Lisää uusi" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button_Click"/>
                 <TextBlock x:Name="textBlock1" Text="Akut" FontSize="20" Padding="5" TextAlignment="Center"/>
                 <ListView x:Name="listBox1" Height="225" Width="225" Padding="5" Margin="0,10,0,10"

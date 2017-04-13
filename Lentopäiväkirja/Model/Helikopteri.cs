@@ -21,7 +21,7 @@ namespace Lentopäiväkirja.Model
 
 
         /// <summary>
-        /// This class holds employee view model data.
+        /// Tämä luokka säilöö helikopteri view model dataa.
         /// </summary>
         public class HelikopteriViewModel
         {
@@ -32,12 +32,12 @@ namespace Lentopäiväkirja.Model
             public HelikopteriViewModel()
             {
                 // testi dataa
-                helikopterit.Add(new Helikopteri { nimi = "kopu1", sarjanumero = "hu345r", vari = "punainen", lennot = 0, mHihna = 0, pHihna = 0, painelaakerit = 0 });
-                helikopterit.Add(new Helikopteri { nimi = "kopu2", sarjanumero = "hu05r", vari = "vihreä", lennot = 39, mHihna = 345, pHihna = 0, painelaakerit = 0 });
-                helikopterit.Add(new Helikopteri { nimi = "kopu3", sarjanumero = "hu34u89", vari = "punaien", lennot = 4440, mHihna = 44, pHihna = 45, painelaakerit = 4 });
-                helikopterit.Add(new Helikopteri { nimi = "kopu4", sarjanumero = "hu745r", vari = "punnen", lennot = 350, mHihna = 2, pHihna = 67, painelaakerit = 0 });
-                helikopterit.Add(new Helikopteri { nimi = "kopu5", sarjanumero = "h2345r", vari = "painen", lennot = 3, mHihna = 62, pHihna = 3, painelaakerit = 50 });
-                helikopterit.Add(new Helikopteri { nimi = "kopu6", sarjanumero = "hue45r", vari = "pun", lennot = 120, mHihna = 999, pHihna = 45, painelaakerit = 6 });
+                helikopterit.Add(new Helikopteri { nimi = "kopu1", sarjanumero = "p345r", vari = "punainen", lennot = 0, mHihna = 0, pHihna = 0, painelaakerit = 0 });
+                helikopterit.Add(new Helikopteri { nimi = "kopu2", sarjanumero = "hu05r", vari = "turkoosi", lennot = 39, mHihna = 345, pHihna = 0, painelaakerit = 0 });
+                helikopterit.Add(new Helikopteri { nimi = "kopu3", sarjanumero = "gz4u9", vari = "sininen", lennot = 4440, mHihna = 44, pHihna = 45, painelaakerit = 4 });
+                helikopterit.Add(new Helikopteri { nimi = "kopu4", sarjanumero = "u745r", vari = "keltainen", lennot = 350, mHihna = 2, pHihna = 67, painelaakerit = 0 });
+                helikopterit.Add(new Helikopteri { nimi = "kopu5", sarjanumero = "n2345r", vari = "violetti", lennot = 3, mHihna = 62, pHihna = 3, painelaakerit = 50 });
+                helikopterit.Add(new Helikopteri { nimi = "kopu6", sarjanumero = "6lu45r", vari = "musta", lennot = 120, mHihna = 999, pHihna = 45, painelaakerit = 6 });
             }
         }
 
