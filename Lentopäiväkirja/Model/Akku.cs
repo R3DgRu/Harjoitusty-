@@ -33,7 +33,7 @@ namespace Lentopäiväkirja.Model
             public ObservableCollection<Akku> Akut { get { return akut; } }
 
 
-            public AkkuViewModell() // Kysymys: Miten se lisääminen/poistaminen ohjelman sisältä käsin tehdään?
+            public AkkuViewModell()
             {
                 // testi dataa
                 // akut.Add(new Akku { akkunimi = "akku1", jannite = "22,2", vari = "punainen", kapasiteetti = "2100", pvm = "28.5.2013", syklit = 0, ika = 150 });
