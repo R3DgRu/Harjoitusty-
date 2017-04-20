@@ -33,16 +33,26 @@ namespace Lentopäiväkirja.Model
             public ObservableCollection<Akku> Akut { get { return akut; } }
 
 
-            public AkkuViewModell() // Kysymys: Miten nämä saa tallennettua johonkin siten, että käyttäjä syöttää arvot eikä niitä aseteta tässä? Lisäksi miten se lisääminen/poistaminen ohjelman sisältä käsin tehdään?
+            public AkkuViewModell() // Kysymys: Miten se lisääminen/poistaminen ohjelman sisältä käsin tehdään?
             {
                 // testi dataa
-                akut.Add(new Akku { akkunimi = "akku1", jannite = "22,2", vari = "punainen", kapasiteetti = "2100", pvm = "28.5.2013", syklit = 0, ika = 150 });
-                akut.Add(new Akku { akkunimi = "akku2", jannite = "14,8", vari = "turkoosi", kapasiteetti = "1800", pvm = "3.12.2011", syklit = 0, ika = 110 });
-                akut.Add(new Akku { akkunimi = "akku3", jannite = "3,7", vari = "sininen", kapasiteetti = "4500", pvm = "30.10.2016", syklit = 45, ika = 148 });
-                akut.Add(new Akku { akkunimi = "akku4", jannite = "7,4", vari = "keltainen", kapasiteetti = "5000", pvm = "15.2.2014", syklit = 67, ika = 120 });
-                akut.Add(new Akku { akkunimi = "akku5", jannite = "22,2", vari = "violetti", kapasiteetti = "1200", pvm = "8.6.2015", syklit = 3, ika = 260 });
-                akut.Add(new Akku { akkunimi = "akku6", jannite = "11,1", vari = "musta", kapasiteetti = "2400", pvm = "19.1.2012", syklit = 45, ika = 600 });
+                // akut.Add(new Akku { akkunimi = "akku1", jannite = "22,2", vari = "punainen", kapasiteetti = "2100", pvm = "28.5.2013", syklit = 0, ika = 150 });
+              
             }
+
+            // Lisää uuden akun
+            public void LisaaAkku(Akku akku)
+            {
+                akut.Add(akku);
+            }
+
+            // Poistaa valitun akun
+            public void RemoveAkku(Akku akku)
+            {
+                Akut.Remove(akku);
+            }
+
+
         }
     }
 }

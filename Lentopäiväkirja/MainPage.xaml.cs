@@ -40,6 +40,8 @@ namespace Lentopäiväkirja
 
     }
 
+        // -------------------------------------- HELIKOPTERI --------------------------------------
+
         // Lisää helikopterin tiedot ohjelmaan, kun sitä klikkaa listasta
         private void listBox_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -52,7 +54,69 @@ namespace Lentopäiväkirja
             textBlock12.Text = helikopteri.pHihna.ToString();
         }
 
-        
+        // Lisää uuden helikopterin tietorakenteeseen
+        private void button10_Click(object sender, RoutedEventArgs e)
+        {
+            Helikopteri uusihelikopteri = new Helikopteri();
+            uusihelikopteri.nimi = uusinimi.Text;
+            uusihelikopteri.sarjanumero = uusinumero.Text;
+            ViewModel.LisaaHelikopteri(uusihelikopteri);
+            Lisaa_helikopteri.Visibility = Visibility.Collapsed;
+            Lisaa_helikopteri_border.Visibility = Visibility.Collapsed;
+        }
+
+        // Poistaa valitun helikopterin
+        private void button54_Click(object sender, RoutedEventArgs e)
+        {
+            Helikopteri helikopteri = (Helikopteri)listBox.SelectedItem;
+            ViewModel.RemoveHelikopteri(helikopteri);
+            Helikopterin_poisto.Visibility = Visibility.Collapsed;
+            Helikopterin_poisto_border.Visibility = Visibility.Collapsed;
+        }
+
+        // Päivittää valitun helikopterin tiedot
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            Helikopteri helikopteri = (Helikopteri)listBox.SelectedItem;
+            helikopteri.nimi = textBox.Text;
+            helikopteri.sarjanumero = textBox1.Text;
+        }
+
+        // Lisää lentoja
+        private void button7_Click(object sender, RoutedEventArgs e)
+        {
+            // kohde textBlock5
+        }
+
+        // Avaa "Lisää helikopteri" -näkymän
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Lisaa_helikopteri.Visibility = Visibility.Visible;
+            Lisaa_helikopteri_border.Visibility = Visibility.Visible;
+        }
+
+        // Sulkee "Lisää helikopteri" -näkymän
+        private void button9_Click(object sender, RoutedEventArgs e)
+        {
+            Lisaa_helikopteri.Visibility = Visibility.Collapsed;
+            Lisaa_helikopteri_border.Visibility = Visibility.Collapsed;
+        }
+
+        // Avaa helikopterin poistoikkunan
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            Helikopterin_poisto.Visibility = Visibility.Visible;
+            Helikopterin_poisto_border.Visibility = Visibility.Visible; 
+        }
+        // Sulkee helikopterin poistoikkunan
+        private void button53_Click(object sender, RoutedEventArgs e)
+        {
+            Helikopterin_poisto.Visibility = Visibility.Collapsed;
+            Helikopterin_poisto_border.Visibility = Visibility.Collapsed;
+        }
+
+        // -------------------------------------- AKKU --------------------------------------
+
         // Lisää akun tiedot ohjelmaan, kun sitä klikkaa listasta
         private void listBox1_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -65,24 +129,48 @@ namespace Lentopäiväkirja
             textBlock21.Text = akku.ika.ToString();
         }
 
-        // Avaa "Lisää helikopteri" -näkymän
-        private void button_Click(object sender, RoutedEventArgs e)
+        // Lisää uuden akun tietorakenteeseen
+        private void button32_Click(object sender, RoutedEventArgs e)
         {
-            Lisaa_helikopteri.Visibility = Visibility.Visible;
-            Lisaa_helikopteri_border.Visibility = Visibility.Visible;
+            Akku uusiakku = new Akku();
+            uusiakku.akkunimi = uusiakkunimi.Text;
+            uusiakku.pvm = uusipvm.Text;
+            uusiakku.jannite = uusijannite.Text;
+            uusiakku.kapasiteetti = uusikapasiteetti.Text;
+            ViewModell.LisaaAkku(uusiakku);
+
+            Lisaa_akku.Visibility = Visibility.Collapsed;
+            Lisaa_akku_border.Visibility = Visibility.Collapsed;
         }
 
-        // Sulkee (peruuttaa) "Lisää helikopteri" -näkymän
-        private void button9_Click(object sender, RoutedEventArgs e)
+        // Poistaa valitun akun
+        private void button56_Click(object sender, RoutedEventArgs e)
         {
-            Lisaa_helikopteri.Visibility = Visibility.Collapsed;
-            Lisaa_helikopteri_border.Visibility = Visibility.Collapsed;
+            Akku akku = (Akku)listBox1.SelectedItem;
+            ViewModell.RemoveAkku(akku);
+
+            Akun_poisto.Visibility = Visibility.Collapsed;
+            Akun_poisto_border.Visibility = Visibility.Collapsed;
         }
 
-        // Lisää uuden helikopterin tietorakenteeseen
-        private void button10_Click(object sender, RoutedEventArgs e)
+        // Päivittää valitun akun tiedot
+        private void button5_Click(object sender, RoutedEventArgs e)
         {
-            // tähän jotain...
+            Akku akku = (Akku)listBox1.SelectedItem;
+            akku.akkunimi = textBox2.Text;
+            akku.jannite = textBox3.Text;
+            akku.kapasiteetti = textBox4.Text;
+            akku.pvm = textBox5.Text;
+        }
+
+        // Lisää syklejä
+        private void button8_Click(object sender, RoutedEventArgs e)
+        {
+            // kohde textBlock19, lähde textBox7
+            Akku akku = (Akku)listBox3.SelectedItem;
+
+
+            textBlock19.Text = akku.syklit.ToString();
         }
 
         // Avaa "Lisää akku" -näkymän
@@ -91,42 +179,25 @@ namespace Lentopäiväkirja
             Lisaa_akku.Visibility = Visibility.Visible;
             Lisaa_akku_border.Visibility = Visibility.Visible;
         }
-
-        // Sulkee (peruuttaa) "Lisää akku" -näkymän
+        // Sulkee "Lisää akku" -näkymän
         private void button31_Click(object sender, RoutedEventArgs e)
         {
             Lisaa_akku.Visibility = Visibility.Collapsed;
             Lisaa_akku_border.Visibility = Visibility.Collapsed;
         }
 
-        // Avaa "Haluatko varmasti poistaa valitun helikopterin?" -ikkunan
-        private void button3_Click(object sender, RoutedEventArgs e)
-        {
-            Helikopterin_poisto.Visibility = Visibility.Visible;
-            Helikopterin_poisto_border.Visibility = Visibility.Visible; 
-        }
-
-        // Sulkee helikopterin poisto popupin
-        private void button53_Click(object sender, RoutedEventArgs e)
-        {
-            Helikopterin_poisto.Visibility = Visibility.Collapsed;
-            Helikopterin_poisto_border.Visibility = Visibility.Collapsed;
-        }
-
-        // Avaa "Haluatko varmasti poistaa valitun akun?" -ikkunan
+        // Avaa akun poistoikkunan
         private void button6_Click(object sender, RoutedEventArgs e)
         {
             Akun_poisto.Visibility = Visibility.Visible;
             Akun_poisto_border.Visibility = Visibility.Visible;
         }
-
-        // Sulkee akun poisto popupin
+        // Sulkee akun poistoikkunan
         private void button55_Click(object sender, RoutedEventArgs e)
         {
             Akun_poisto.Visibility = Visibility.Collapsed;
             Akun_poisto_border.Visibility = Visibility.Collapsed;
         }
-
 
     }
 }
