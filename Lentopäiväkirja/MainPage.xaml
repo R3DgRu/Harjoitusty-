@@ -72,17 +72,17 @@
                 <TextBlock x:Name="textBlock6" Text="Kulutusosat" FontSize="20" Padding="0,30,0,10" TextAlignment="Center"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock x:Name="textBlock8" Text="000"/>
-                    <CheckBox x:Name="checkBox" Content="Painelaakerit" Margin="80,0,0,0"/>
+                    <CheckBox x:Name="checkBox" Content="Painelaakerit" Margin="80,0,0,0" IsChecked="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock x:Name="textBlock10" Text="000"/>
-                    <CheckBox x:Name="checkBox1" Content="Moottorin hihna" Margin="80,0,0,0"/>
+                    <CheckBox x:Name="checkBox1" Content="Moottorin hihna" Margin="80,0,0,0" IsChecked="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock x:Name="textBlock12" Text="000"/>
-                    <CheckBox x:Name="checkBox2" Content="Perähihna" Margin="80,0,0,0"/>
+                    <CheckBox x:Name="checkBox2" Content="Perähihna" Margin="80,0,0,0" IsChecked="False"/>
                 </StackPanel>
-                <Button x:Name="button4" Content="Nollaa" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+                <Button x:Name="button4" Content="Nollaa" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button4_Click"/>
             </StackPanel>
 
             <!-- Kolmas sarake -->
@@ -110,8 +110,8 @@
 
             <!-- Neljäs sarake -->
             <StackPanel Grid.Column="3" HorizontalAlignment="Center" Padding="20" Width="Auto">
-                <TextBlock x:Name="textBlock22" Text="Lisää lentoja (akullista)" FontSize="20" Padding="5" TextAlignment="Center"/>
-                <TextBox x:Name="textBox6" Text="lkm" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBlock x:Name="textBlock22" Text="Lisää lentoja (akullista, lkm)" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <TextBox x:Name="textBox6" Text="" Width="225" Padding="5" Margin="0,10,0,10"/>
                 <TextBlock x:Name="textBlock23" Text="Valitse helikopteri" FontSize="20" Padding="5" TextAlignment="Center"/>
                 <ListView x:Name="listBox2" Height="145" Width="225" Padding="5" Margin="0,10,0,10"
                          ItemsSource="{x:Bind ViewModel.Helikopterit}"
@@ -119,8 +119,8 @@
                           ItemClick="listBox_ItemClick"
                           IsItemClickEnabled="True"/>
                 <Button x:Name="button7" Content="Lisää lentoja" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button7_Click"/>
-                <TextBlock x:Name="textBlock24" Text="Lisää syklejä" FontSize="20" Padding="5" TextAlignment="Center"/>
-                <TextBox x:Name="textBox7" Text="lkm" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBlock x:Name="textBlock24" Text="Lisää syklejä (lkm)" FontSize="20" Padding="5" TextAlignment="Center"/>
+                <TextBox x:Name="textBox7" Text="" Width="225" Padding="5" Margin="0,10,0,10"/>
                 <TextBlock x:Name="textBlock25" Text="Valitse akku" FontSize="20" Padding="5" TextAlignment="Center"/>
                 <ListView x:Name="listBox3" Height="145" Width="225"
                          ItemsSource="{x:Bind ViewModell.Akut}"
