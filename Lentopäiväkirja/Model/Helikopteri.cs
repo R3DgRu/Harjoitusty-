@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Lentopäiväkirja.Model
 {
     /// <summary>
-    /// Tämä luokka säilöö helikoptereiden tietoja
+    /// Tämä luokka säilöö helikoptereiden tietoja.
     /// </summary>
     public class Helikopteri
     {
@@ -31,27 +31,24 @@ namespace Lentopäiväkirja.Model
             private ObservableCollection<Helikopteri> helikopterit = new ObservableCollection<Helikopteri>();
             public ObservableCollection<Helikopteri> Helikopterit { get { return helikopterit; } }
 
-
+            // HELIKOPTERI VIEWMODEL
             public HelikopteriViewModel()
             {
-                // testi dataa
-                // helikopterit.Add(new Helikopteri { nimi = "kopu1", sarjanumero = "p345r", vari = "punainen", lennot = 0, mHihna = 0, pHihna = 0, painelaakerit = 0 });
                 
             }
 
-            // Lisää uuuden helikopterin
+            // LISÄÄ UUDEN HELIKOPTERIN
             public void LisaaHelikopteri(Helikopteri helikopteri)
             {
                 helikopterit.Add(helikopteri);
             }
 
-            // Poistaa valitun helikopterin
+            // POISTAA VALITUN HELIKOPTERIN
             public void RemoveHelikopteri(Helikopteri helikopteri)
             {
                 Helikopterit.Remove(helikopteri);
             }
 
         }
-
     }
 }

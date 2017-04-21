@@ -12,7 +12,6 @@ namespace Lentopäiväkirja.Model
     /// </summary>
     public class Akku
     {
-
         public string akkunimi { get; set; }
         public string jannite { get; set; }
         public string vari { get; set; }
@@ -32,26 +31,23 @@ namespace Lentopäiväkirja.Model
             private ObservableCollection<Akku> akut = new ObservableCollection<Akku>();
             public ObservableCollection<Akku> Akut { get { return akut; } }
 
-
+            // AKKU VIEWMODELL
             public AkkuViewModell()
             {
-                // testi dataa
-                // akut.Add(new Akku { akkunimi = "akku1", jannite = "22,2", vari = "punainen", kapasiteetti = "2100", pvm = "28.5.2013", syklit = 0, ika = 150 });
-              
+
             }
 
-            // Lisää uuden akun
+            // LISÄÄ UUDEN AKUN
             public void LisaaAkku(Akku akku)
             {
                 akut.Add(akku);
             }
 
-            // Poistaa valitun akun
+            // POISTAA VALITUN AKUN
             public void RemoveAkku(Akku akku)
             {
                 Akut.Remove(akku);
             }
-
 
         }
     }
