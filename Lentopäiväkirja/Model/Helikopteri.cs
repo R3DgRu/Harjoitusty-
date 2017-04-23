@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Lentopäiväkirja.Model
 {
@@ -13,7 +14,7 @@ namespace Lentopäiväkirja.Model
     public class Helikopteri
     {
         public string nimi { get; set; }
-        public string sarjanumero { get; set; }
+        public string sarjanumero { get; set; } 
         public string vari { get; set; }
         public int lennot { get; set; }
         public int painelaakerit { get; set; }
@@ -26,8 +27,6 @@ namespace Lentopäiväkirja.Model
         /// </summary>
         public class HelikopteriViewModel
         {
-            //private List<Helikopteri> helikopterit = new List<Helikopteri>();
-            //public List<Helikopteri> Helikopterit { get { return helikopterit; } }
             private ObservableCollection<Helikopteri> helikopterit = new ObservableCollection<Helikopteri>();
             public ObservableCollection<Helikopteri> Helikopterit { get { return helikopterit; } }
 
@@ -48,7 +47,6 @@ namespace Lentopäiväkirja.Model
             {
                 Helikopterit.Remove(helikopteri);
             }
-
         }
     }
 }

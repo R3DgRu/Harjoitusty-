@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Lentopäiväkirja.Model
 {
@@ -26,8 +27,6 @@ namespace Lentopäiväkirja.Model
         /// </summary>
         public class AkkuViewModell
         {
-            //private List<Akku> akut = new List<Akku>();
-            //public List<Akku> Akut { get { return akut; } }
             private ObservableCollection<Akku> akut = new ObservableCollection<Akku>();
             public ObservableCollection<Akku> Akut { get { return akut; } }
 
@@ -48,7 +47,6 @@ namespace Lentopäiväkirja.Model
             {
                 Akut.Remove(akku);
             }
-
         }
     }
 }
