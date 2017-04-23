@@ -19,8 +19,6 @@ namespace Lentopäiväkirja.Model
         public string kapasiteetti { get; set; }
         public string pvm { get; set; }
         public int syklit { get; set; }
-        public int ika { get; set; }
-
 
         /// <summary>
         /// Tämä luokka säilöö akku view modell dataa.

@@ -110,7 +110,7 @@ namespace Lentopäiväkirja
                 Helikopteri helikopteri = (Helikopteri)listBox.SelectedItem;
                 helikopteri.nimi = textBox.Text;
                 helikopteri.sarjanumero = textBox1.Text;
-                //listBox.SelectedItem = helikopteri.nimi;
+                //listBox.ItemTemplate = HelikopteriListDataTemplate;
                 //listBox.SelectedItem = textBox1.Text;
 
                 SaveHelikopterit(); // tallentaa helikopterit tiedostoon
@@ -286,7 +286,6 @@ namespace Lentopäiväkirja
             textBox4.Text = akku.kapasiteetti;
             textBox5.Text = akku.pvm;
             textBlock19.Text = akku.syklit.ToString();
-            textBlock21.Text = akku.ika.ToString();
         }
 
         // LISÄÄ UUDEN AKUN TIETORAKENTEESEEN
@@ -419,5 +418,40 @@ namespace Lentopäiväkirja
                 Debug.WriteLine("Akkujen tallennus epäonnistui." + ex.ToString());
             }
         }
+
+
+        // ---------------------------------------------------
+        /*
+        private async void ReadHelikopterit()
+        {
+            try
+            {
+                // find a file
+                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                Stream stream = await storageFolder.OpenStreamForReadAsync("helikopterit.dat");
+
+                // is it empty
+                // if (stream == null) Helikopteri = new ObservableCollection<Helikopteri>();
+
+                // read data
+                DataContractSerializer serializer = new DataContractSerializer(typeof(ObservableCollection<Helikopteri>));
+                ViewModel.Helikopterit = (ObservableCollection<Helikopteri>)serializer.ReadObject(stream);
+                //ShowEmployees();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Following exception has happend (reading): " + ex.ToString());
+            }
+        }
+
+        private void ShowHelikopterit()
+        {
+            listBox.ItemTemplate = "Employees:" + Environment.NewLine;
+            foreach (Helikopteri helikopteri in helikopterit)
+            {
+                // EmployeesTextBlock.Text += employee.Firstname + " " + employee.Lastname + Environment.NewLine;
+            }
+        }
+        */
     }
 }

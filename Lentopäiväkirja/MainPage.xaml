@@ -102,10 +102,6 @@
                     <TextBlock x:Name="textBlock18" Text="Syklit"/>
                     <TextBlock x:Name="textBlock19" Text="000" Margin="135,0,10,0"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Name="textBlock20" Text="Ikä"/>
-                    <TextBlock x:Name="textBlock21" Text="000" Margin="150,0,0,0"/>
-                </StackPanel>
             </StackPanel>
 
             <!-- Neljäs sarake -->

@@ -21,7 +21,6 @@ namespace Lentopäiväkirja.Model
         public int mHihna { get; set; }
         public int pHihna { get; set; }
 
-
         /// <summary>
         /// Tämä luokka säilöö helikopteri view model dataa.
         /// </summary>
