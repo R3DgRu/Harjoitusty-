@@ -20,6 +20,7 @@ using System.Xml;
 using Windows.Storage;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using Windows.UI;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -42,26 +43,51 @@ namespace Lentopäiväkirja
             this.InitializeComponent();
             this.ViewModel = new Helikopteri.HelikopteriViewModel();
             this.ViewModell = new Akku.AkkuViewModell();
+            ViewModel.LueHelikopterit();
+            ViewModell.LueAkut();
     }
         // -------------------------------------- HELIKOPTERI --------------------------------------
 
         // LISÄÄ HELIKOPTERIN TIEDOT OHJELMAAN, KUN SITÄ KLIKKAA LISTASTA
         private void listBox_ItemClick(object sender, ItemClickEventArgs e)
+        {   
+            Helikopteri helikopteri = (Helikopteri)e.ClickedItem;
+            textBox.Text = helikopteri.nimi;
+            textBox1.Text = helikopteri.sarjanumero;
+            textBlock5.Text = helikopteri.lennot.ToString();
+            textBlock8.Text = helikopteri.painelaakerit.ToString();
+            textBlock10.Text = helikopteri.mHihna.ToString();
+            textBlock12.Text = helikopteri.pHihna.ToString();
+            // lisää värit ohjelmaan
+            Color color = (Color)Windows.UI.Xaml.Markup.XamlBindingHelper.ConvertValue(typeof(Color), helikopteri.vari);
+            Windows.UI.Xaml.Media.SolidColorBrush scb = new SolidColorBrush(color);
+            textBox.BorderBrush = scb;
+            textBox1.BorderBrush = scb;
+            button2.BorderBrush = scb;
+            button3.BorderBrush = scb;
+            button4.BorderBrush = scb;
+        }
+
+        // VALITSEE HELIKOPTERIN LENTOJEN LISÄYSLISTASTA
+        private void listBox2_ItemClick(object sender, ItemClickEventArgs e)
         {
-            try
-            {
-                Helikopteri helikopteri = (Helikopteri)e.ClickedItem;
-                textBox.Text = helikopteri.nimi;
-                textBox1.Text = helikopteri.sarjanumero;
-                textBlock5.Text = helikopteri.lennot.ToString();
-                textBlock8.Text = helikopteri.painelaakerit.ToString();
-                textBlock10.Text = helikopteri.mHihna.ToString();
-                textBlock12.Text = helikopteri.pHihna.ToString();
-            }
-            catch(Exception ex)
-            {
-                Debug.WriteLine("Helikopterin lisääminen listaan epäonnistui." + ex.ToString());
-            }
+            Helikopteri helikopteri = (Helikopteri)e.ClickedItem;
+            textBox.Text = helikopteri.nimi;
+            textBox1.Text = helikopteri.sarjanumero;
+            textBlock5.Text = helikopteri.lennot.ToString();
+            textBlock8.Text = helikopteri.painelaakerit.ToString();
+            textBlock10.Text = helikopteri.mHihna.ToString();
+            textBlock12.Text = helikopteri.pHihna.ToString();
+            // lisää värit ohjelmaan
+            Color color = (Color)Windows.UI.Xaml.Markup.XamlBindingHelper.ConvertValue(typeof(Color), helikopteri.vari);
+            Windows.UI.Xaml.Media.SolidColorBrush scb = new SolidColorBrush(color);
+            textBox.BorderBrush = scb;
+            textBox1.BorderBrush = scb;
+            textBox6.BorderBrush = scb;
+            button2.BorderBrush = scb;
+            button3.BorderBrush = scb;
+            button4.BorderBrush = scb;
+            button7.BorderBrush = scb;
         }
 
         // LISÄÄ UUDEN HELIKOPTERIN TIETORAKENTEESEEN
@@ -72,11 +98,13 @@ namespace Lentopäiväkirja
                 Helikopteri uusihelikopteri = new Helikopteri();
                 uusihelikopteri.nimi = uusinimi.Text;
                 uusihelikopteri.sarjanumero = uusinumero.Text;
+                // tallentaa värit
+                SolidColorBrush vari = (SolidColorBrush)kopt_varivalitsin.Fill;
+                uusihelikopteri.vari = vari.Color.ToString();
+                
                 ViewModel.LisaaHelikopteri(uusihelikopteri);
                 Lisaa_helikopteri.Visibility = Visibility.Collapsed;
                 Lisaa_helikopteri_border.Visibility = Visibility.Collapsed;
-
-                SaveHelikopterit(); // tallentaa helikopterit tiedostoon
             }
             catch (Exception ex)
             {
@@ -90,11 +118,9 @@ namespace Lentopäiväkirja
             try
             {
                 Helikopteri helikopteri = (Helikopteri)listBox.SelectedItem;
-                ViewModel.RemoveHelikopteri(helikopteri);
+                ViewModel.PoistaHelikopteri(helikopteri);
                 Helikopterin_poisto.Visibility = Visibility.Collapsed;
                 Helikopterin_poisto_border.Visibility = Visibility.Collapsed;
-
-                SaveHelikopterit(); // tallentaa helikopterit tiedostoon
             }
             catch (Exception ex)
             {
@@ -110,10 +136,7 @@ namespace Lentopäiväkirja
                 Helikopteri helikopteri = (Helikopteri)listBox.SelectedItem;
                 helikopteri.nimi = textBox.Text;
                 helikopteri.sarjanumero = textBox1.Text;
-                //listBox.ItemTemplate = HelikopteriListDataTemplate;
-                //listBox.SelectedItem = textBox1.Text;
-
-                SaveHelikopterit(); // tallentaa helikopterit tiedostoon
+                ViewModel.PaivitaHelikopteri();
             }
             catch(Exception ex)
             {
@@ -127,14 +150,15 @@ namespace Lentopäiväkirja
             try
             {
                 Helikopteri helikopteri = (Helikopteri)listBox2.SelectedItem;
+
                 // lentojen lisäys
-                int value = 0; // määrittelee value muuttujan
-                value = Convert.ToInt32(textBox6.Text); // ottaa textbox6:sta merkkijonon ja muuttaa sen numeroiksi ja tunkee value muuttujaan
-                int value2 = 0; // määrittelee value2 muuttujan
-                value2 = Convert.ToInt32(textBlock5.Text); // ottaa textblock5:stä merkkijonon ja muuttaa sen numeroiksi ja tunkee value2 muuttujaan
-                value = value2 + value; // laskee yhteen molempien muuttujien arvot ja tunkee ne lopuksi value muuttujaan
-                helikopteri.lennot = value; // laittaa helikopterin lentoihin valuen sisältämän arvon
-                textBlock5.Text = helikopteri.lennot.ToString(); // muuttaa akun syklit merkkijonoksi ja sijoittaa sen textblock5:een
+                int value = 0;
+                value = Convert.ToInt32(textBox6.Text);
+                int value2 = 0;
+                value2 = Convert.ToInt32(textBlock5.Text);
+                value = value2 + value;
+                helikopteri.lennot = value;
+                textBlock5.Text = helikopteri.lennot.ToString();
 
                 // painelaakerien lisäys
                 int value3 = 0;
@@ -163,7 +187,7 @@ namespace Lentopäiväkirja
                 helikopteri.pHihna = value7;
                 textBlock12.Text = helikopteri.pHihna.ToString();
 
-                SaveHelikopterit(); // tallentaa helikopterit tiedostoon
+                ViewModel.PaivitaHelikopteri();
             }
             catch (Exception ex)
             {
@@ -177,7 +201,7 @@ namespace Lentopäiväkirja
             try
             {
                 Helikopteri helikopteri = (Helikopteri)listBox.SelectedItem;
-                // painelaakerien nollaus
+
                 bool check = checkBox.IsChecked ?? false;
                 if (check)
                 {
@@ -186,8 +210,6 @@ namespace Lentopäiväkirja
                     value8 = 0;
                     helikopteri.painelaakerit = value8;
                     textBlock8.Text = helikopteri.painelaakerit.ToString();
-
-                    SaveHelikopterit(); // tallentaa helikopterit tiedostoon
                 }
 
                 // moottorin hihnan nollaus
@@ -199,8 +221,6 @@ namespace Lentopäiväkirja
                     value9 = 0;
                     helikopteri.mHihna = value9;
                     textBlock10.Text = helikopteri.mHihna.ToString();
-
-                    SaveHelikopterit(); // tallentaa helikopterit tiedostoon
                 }
 
                 // perän hihnan nollaus
@@ -212,14 +232,14 @@ namespace Lentopäiväkirja
                     value9 = 0;
                     helikopteri.pHihna = value9;
                     textBlock12.Text = helikopteri.pHihna.ToString();
-
-                    SaveHelikopterit(); // tallentaa helikopterit tiedostoon
                 }
 
                 else
                 {
                     // älä tee mitään :)
                 }
+
+                ViewModel.PaivitaHelikopteri();
             }
             catch (Exception ex)
             {
@@ -253,28 +273,7 @@ namespace Lentopäiväkirja
             Helikopterin_poisto.Visibility = Visibility.Collapsed;
             Helikopterin_poisto_border.Visibility = Visibility.Collapsed;
         }
-
-        // TALLENTAA HELIKOPTERIT TIEDOSTOON
-        private async void SaveHelikopterit()
-        {
-            try
-            {
-                // avaa tai luo tiedosto
-                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-                StorageFile employeesFile = await storageFolder.CreateFileAsync("helikopterit.dat", CreationCollisionOption.OpenIfExists);
-
-                // tallenna systeemit tiedostoon
-                Stream stream = await employeesFile.OpenStreamForWriteAsync();
-                DataContractSerializer serializer = new DataContractSerializer(typeof(ObservableCollection<Helikopteri>));
-                serializer.WriteObject(stream, ViewModel.Helikopterit);
-                await stream.FlushAsync();
-                stream.Dispose();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("Helikopterien tallennus epäonnistui." + ex.ToString());
-            }
-        }
+        
         // -------------------------------------- AKKU --------------------------------------
 
         // LISÄÄ AKUN TIEDOT OHJELMAAN, KUN SITÄ KLIKKAA LISTASTA
@@ -286,6 +285,37 @@ namespace Lentopäiväkirja
             textBox4.Text = akku.kapasiteetti;
             textBox5.Text = akku.pvm;
             textBlock19.Text = akku.syklit.ToString();
+            // lisää värit ohjelmaan
+            Color color = (Color)Windows.UI.Xaml.Markup.XamlBindingHelper.ConvertValue(typeof(Color), akku.vari);
+            Windows.UI.Xaml.Media.SolidColorBrush scb = new SolidColorBrush(color);
+            textBox2.BorderBrush = scb;
+            textBox3.BorderBrush = scb;
+            textBox4.BorderBrush = scb;
+            textBox5.BorderBrush = scb;
+            button5.BorderBrush = scb;
+            button6.BorderBrush = scb;
+        }
+
+        // VALITSEE AKUN SYKLIEN LISÄYSLISTASTA
+        private void listBox3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Akku akku = (Akku)e.ClickedItem;
+            textBox2.Text = akku.akkunimi;
+            textBox3.Text = akku.jannite;
+            textBox4.Text = akku.kapasiteetti;
+            textBox5.Text = akku.pvm;
+            textBlock19.Text = akku.syklit.ToString();
+            // lisää värit ohjelmaan
+            Color color = (Color)Windows.UI.Xaml.Markup.XamlBindingHelper.ConvertValue(typeof(Color), akku.vari);
+            Windows.UI.Xaml.Media.SolidColorBrush scb = new SolidColorBrush(color);
+            textBox2.BorderBrush = scb;
+            textBox3.BorderBrush = scb;
+            textBox4.BorderBrush = scb;
+            textBox5.BorderBrush = scb;
+            textBox7.BorderBrush = scb;
+            button5.BorderBrush = scb;
+            button6.BorderBrush = scb;
+            button8.BorderBrush = scb;
         }
 
         // LISÄÄ UUDEN AKUN TIETORAKENTEESEEN
@@ -298,12 +328,13 @@ namespace Lentopäiväkirja
                 uusiakku.pvm = uusipvm.Text;
                 uusiakku.jannite = uusijannite.Text;
                 uusiakku.kapasiteetti = uusikapasiteetti.Text;
-                ViewModell.LisaaAkku(uusiakku);
+                // tallentaa värit
+                SolidColorBrush vari = (SolidColorBrush)akun_varivalitsin.Fill;
+                uusiakku.vari = vari.Color.ToString();
 
+                ViewModell.LisaaAkku(uusiakku);
                 Lisaa_akku.Visibility = Visibility.Collapsed;
                 Lisaa_akku_border.Visibility = Visibility.Collapsed;
-
-                SaveAkut(); // tallentaa akut tiedostoon
             }
             catch (Exception ex)
             {
@@ -317,12 +348,9 @@ namespace Lentopäiväkirja
             try
             {
                 Akku akku = (Akku)listBox1.SelectedItem;
-                ViewModell.RemoveAkku(akku);
-            
+                ViewModell.PoistaAkku(akku);
                 Akun_poisto.Visibility = Visibility.Collapsed;
                 Akun_poisto_border.Visibility = Visibility.Collapsed;
-
-                SaveAkut(); // tallentaa akut tiedostoon
             }
             catch (Exception ex)
             {
@@ -341,7 +369,7 @@ namespace Lentopäiväkirja
                 akku.kapasiteetti = textBox4.Text;
                 akku.pvm = textBox5.Text;
 
-                SaveAkut(); // tallentaa akut tiedostoon
+                ViewModell.PaivitaAkku();
             }
             catch (Exception ex)
             {
@@ -363,7 +391,7 @@ namespace Lentopäiväkirja
                 akku.syklit = value10; // laittaa akun sykleihin value10:n sisältämän arvon
                 textBlock19.Text = akku.syklit.ToString(); // muuttaa akun syklit merkkijonoksi ja sijoittaa ne textblock19:sta
 
-                SaveAkut(); // tallentaa akut tiedostoon
+                ViewModell.PaivitaAkku();
             }
             catch (Exception ex)
             {
@@ -397,61 +425,208 @@ namespace Lentopäiväkirja
             Akun_poisto_border.Visibility = Visibility.Collapsed;
         }
 
-        // TALLENTAA AKUT TIEDOSTOON
-        private async void SaveAkut()
-        {
-            try
-            {
-                // avaa tai luo tiedosto
-                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-                StorageFile employeesFile = await storageFolder.CreateFileAsync("akut.dat", CreationCollisionOption.OpenIfExists);
+        // --------------------------------- VÄRIT -----------------------------------
 
-                // tallenna systeemit tiedostoon
-                Stream stream = await employeesFile.OpenStreamForWriteAsync();
-                DataContractSerializer serializer = new DataContractSerializer(typeof(ObservableCollection<Akku>));
-                serializer.WriteObject(stream, ViewModell.Akut);
-                await stream.FlushAsync();
-                stream.Dispose();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("Akkujen tallennus epäonnistui." + ex.ToString());
-            }
+        // VÄRINVALINNAT HELIKOPTEREIHIN
+        private void button11_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 240, 132, 132));
         }
 
-
-        // ---------------------------------------------------
-        /*
-        private async void ReadHelikopterit()
+        private void button12_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                // find a file
-                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-                Stream stream = await storageFolder.OpenStreamForReadAsync("helikopterit.dat");
-
-                // is it empty
-                // if (stream == null) Helikopteri = new ObservableCollection<Helikopteri>();
-
-                // read data
-                DataContractSerializer serializer = new DataContractSerializer(typeof(ObservableCollection<Helikopteri>));
-                ViewModel.Helikopterit = (ObservableCollection<Helikopteri>)serializer.ReadObject(stream);
-                //ShowEmployees();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("Following exception has happend (reading): " + ex.ToString());
-            }
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 230, 120, 169));
         }
 
-        private void ShowHelikopterit()
+        private void button13_Click(object sender, RoutedEventArgs e)
         {
-            listBox.ItemTemplate = "Employees:" + Environment.NewLine;
-            foreach (Helikopteri helikopteri in helikopterit)
-            {
-                // EmployeesTextBlock.Text += employee.Firstname + " " + employee.Lastname + Environment.NewLine;
-            }
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 198, 116, 219));
         }
-        */
+
+        private void button14_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 136, 122, 217));
+        }
+
+        private void button15_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 92, 156, 224));
+        }
+
+        private void button16_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 123, 200, 224));
+        }
+
+        private void button17_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 115, 230, 207));
+        }
+
+        private void button18_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 107, 224, 158));
+        }
+
+        private void button19_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 105, 191, 122));
+        }
+
+        private void button20_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 161, 219, 94));
+        }
+
+        private void button21_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 209, 237, 133));
+        }
+
+        private void button22_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 235, 235, 99));
+        }
+
+        private void button23_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 237, 216, 83));
+        }
+
+        private void button24_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 235, 190, 54));
+        }
+
+        private void button25_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 247, 168, 10));
+        }
+
+        private void button26_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 245, 118, 8));
+        }
+
+        private void button27_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 242, 86, 39));
+        }
+
+        private void button28_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 224, 81, 81));
+        }
+
+        private void button29_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 184, 177, 184));
+        }
+
+        private void button30_Click(object sender, RoutedEventArgs e)
+        {
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 117, 117, 117));
+        }
+
+        // VÄRINVALINNAT AKKUIHIN
+        private void button33_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 240, 132, 132));
+        }
+
+        private void button34_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 230, 120, 169));
+        }
+
+        private void button35_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 198, 116, 219));
+        }
+
+        private void button36_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 136, 122, 217));
+        }
+
+        private void button37_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 92, 156, 224));
+        }
+
+        private void button38_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 123, 200, 224));
+        }
+
+        private void button39_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 115, 230, 207));
+        }
+
+        private void button40_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 107, 224, 158));
+        }
+
+        private void button41_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 105, 191, 122));
+        }
+
+        private void button42_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 161, 219, 94));
+        }
+
+        private void button43_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 209, 237, 133));
+        }
+
+        private void button44_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 235, 235, 99));
+        }
+
+        private void button45_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 237, 216, 83));
+        }
+
+        private void button46_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 235, 190, 54));
+        }
+
+        private void button47_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 247, 168, 10));
+        }
+
+        private void button48_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 245, 118, 8));
+        }
+
+        private void button49_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 242, 86, 39));
+        }
+
+        private void button50_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 224, 81, 81));
+        }
+
+        private void button51_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 184, 177, 184));
+        }
+
+        private void button52_Click(object sender, RoutedEventArgs e)
+        {
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 117, 117, 117));
+        }
     }
 }

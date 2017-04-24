@@ -13,7 +13,7 @@
         <DataTemplate x:Key="HelikopteriListDataTemplate" x:DataType="data:Helikopteri">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <StackPanel Margin="20,0,0,0">
-                    <TextBlock Text="{x:Bind nimi}" HorizontalAlignment="Left" FontSize="16"/>
+                    <TextBlock x:Name="helikopteri_valinta" Text="{x:Bind nimi, Mode=OneWay}" HorizontalAlignment="Left" FontSize="16"/>
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
@@ -22,7 +22,7 @@
         <DataTemplate x:Key="AkkuListDataTemplate" x:DataType="data:Akku">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <StackPanel Margin="20,0,0,0">
-                    <TextBlock Text="{x:Bind akkunimi}" HorizontalAlignment="Left" FontSize="16"/>
+                    <TextBlock Text="{x:Bind akkunimi, Mode=OneWay}" HorizontalAlignment="Left" FontSize="16"/>
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
@@ -45,28 +45,28 @@
             <StackPanel Grid.Column="0" HorizontalAlignment="Center" Padding="20" Width="Auto">
                 <TextBlock x:Name="textBlock" Text="Helikopterit" FontSize="20" Padding="5" TextAlignment="Center"/>
                 <ListView x:Name="listBox" Height="225" Width="225" Padding="5" Margin="0,10,0,10"
-                          ItemsSource="{x:Bind ViewModel.Helikopterit}"
+                          ItemsSource="{x:Bind ViewModel.Helikopterit, Mode=OneWay}"
                           ItemTemplate="{StaticResource HelikopteriListDataTemplate}"
                           ItemClick="listBox_ItemClick"
-                          IsItemClickEnabled="True"/>
-                <Button x:Name="button" Content="Lisää uusi" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button_Click"/>
+                          IsItemClickEnabled="True" BorderThickness="2" BorderBrush="#FF7A7A7A"/>
+                <Button x:Name="button" Content="Lisää uusi" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button_Click" BorderThickness="4"/>
                 <TextBlock x:Name="textBlock1" Text="Akut" FontSize="20" Padding="5" TextAlignment="Center"/>
                 <ListView x:Name="listBox1" Height="225" Width="225" Padding="5" Margin="0,10,0,10"
                           ItemsSource="{x:Bind ViewModell.Akut}"
                           ItemTemplate="{StaticResource AkkuListDataTemplate}"
                           ItemClick="listBox1_ItemClick"
-                          IsItemClickEnabled="True"/>
-                <Button x:Name="button1" Content="Lisää uusi" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button1_Click"/>
+                          IsItemClickEnabled="True" BorderThickness="2" BorderBrush="#FF7A7A7A"/>
+                <Button x:Name="button1" Content="Lisää uusi" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button1_Click" BorderThickness="4"/>
             </StackPanel>
 
             <!-- Toinen sarake -->
             <StackPanel Grid.Column="1" HorizontalAlignment="Center" Padding="20" Width="Auto">
                 <TextBlock x:Name="textBlock2" Text="Helikopterin nimi" FontSize="20" Padding="5" TextAlignment="Center"/>
-                <TextBox x:Name="textBox" Text="" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBox x:Name="textBox" Text="" Width="225" Padding="5" Margin="0,10,0,10" BorderThickness="4"/>
                 <TextBlock x:Name="textBlock3" Text="Sarjanumero" FontSize="20" Padding="5" TextAlignment="Center"/>
-                <TextBox x:Name="textBox1" Text="" Width="225" Padding="5" Margin="0,10,0,10"/>
-                <Button x:Name="button2" Content="Päivitä" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button2_Click"/>
-                <Button x:Name="button3" Content="Poista" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button3_Click"/>
+                <TextBox x:Name="textBox1" Text="" Width="225" Padding="5" Margin="0,10,0,10" BorderThickness="4"/>
+                <Button x:Name="button2" Content="Päivitä" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button2_Click" BorderThickness="4"/>
+                <Button x:Name="button3" Content="Poista" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button3_Click" BorderThickness="4"/>
                 <TextBlock x:Name="textBlock4" Text="Lennot" FontSize="20" Padding="0,10,0,5" TextAlignment="Center"/>
                 <TextBlock x:Name="textBlock5" Text="" FontSize="18" Padding="5" TextAlignment="Center"/>
                 <TextBlock x:Name="textBlock6" Text="Kulutusosat" FontSize="20" Padding="0,30,0,10" TextAlignment="Center"/>
@@ -82,21 +82,21 @@
                     <TextBlock x:Name="textBlock12" Text="000"/>
                     <CheckBox x:Name="checkBox2" Content="Perähihna" Margin="80,0,0,0" IsChecked="False"/>
                 </StackPanel>
-                <Button x:Name="button4" Content="Nollaa" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button4_Click"/>
+                <Button x:Name="button4" Content="Nollaa" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button4_Click" BorderThickness="4"/>
             </StackPanel>
 
             <!-- Kolmas sarake -->
             <StackPanel Grid.Column="2" HorizontalAlignment="Center" Padding="20" Width="Auto">
                 <TextBlock x:Name="textBlock13" Text="Akun nimi" FontSize="20" Padding="5" TextAlignment="Center"/>
-                <TextBox x:Name="textBox2" Text="" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBox x:Name="textBox2" Text="" Width="225" Padding="5" Margin="0,10,0,10" BorderThickness="4"/>
                 <TextBlock x:Name="textBlock14" Text="Jännite (V)" FontSize="20" Padding="5" TextAlignment="Center"/>
-                <TextBox x:Name="textBox3" Text="" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBox x:Name="textBox3" Text="" Width="225" Padding="5" Margin="0,10,0,10" BorderThickness="4"/>
                 <TextBlock x:Name="textBlock15" Text="Kapasiteetti (mAh)" FontSize="20" Padding="5" TextAlignment="Center"/>
-                <TextBox x:Name="textBox4" Text="" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBox x:Name="textBox4" Text="" Width="225" Padding="5" Margin="0,10,0,10" BorderThickness="4"/>
                 <TextBlock x:Name="textBlock16" Text="Hankitapäivämäärä" FontSize="20" Padding="5" TextAlignment="Center"/>
-                <TextBox x:Name="textBox5" Text="" Width="225" Padding="5" Margin="0,10,0,10"/>
-                <Button x:Name="button5" Content="Päivitä" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button5_Click"/>
-                <Button x:Name="button6" Content="Poista" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button6_Click"/>
+                <TextBox x:Name="textBox5" Text="" Width="225" Padding="5" Margin="0,10,0,10" BorderThickness="4"/>
+                <Button x:Name="button5" Content="Päivitä" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button5_Click" BorderThickness="4"/>
+                <Button x:Name="button6" Content="Poista" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button6_Click" BorderThickness="4"/>
                 <TextBlock x:Name="textBlock17" Text="Akun tiedot" FontSize="20" Padding="5" TextAlignment="Center"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock x:Name="textBlock18" Text="Syklit"/>
@@ -107,23 +107,23 @@
             <!-- Neljäs sarake -->
             <StackPanel Grid.Column="3" HorizontalAlignment="Center" Padding="20" Width="Auto">
                 <TextBlock x:Name="textBlock22" Text="Lisää lentoja (akullista, lkm)" FontSize="20" Padding="5" TextAlignment="Center"/>
-                <TextBox x:Name="textBox6" Text="" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBox x:Name="textBox6" Text="" Width="225" Padding="5" Margin="0,10,0,10" BorderThickness="4"/>
                 <TextBlock x:Name="textBlock23" Text="Valitse helikopteri" FontSize="20" Padding="5" TextAlignment="Center"/>
-                <ListView x:Name="listBox2" Height="145" Width="225" Padding="5" Margin="0,10,0,10"
+                <ListView x:Name="listBox2" Height="130" Width="225" Padding="5" Margin="0,10,0,10"
                          ItemsSource="{x:Bind ViewModel.Helikopterit}"
                           ItemTemplate="{StaticResource HelikopteriListDataTemplate}"
-                          ItemClick="listBox_ItemClick"
-                          IsItemClickEnabled="True"/>
-                <Button x:Name="button7" Content="Lisää lentoja" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button7_Click"/>
+                          ItemClick="listBox2_ItemClick"
+                          IsItemClickEnabled="True" BorderThickness="2" BorderBrush="#FF7A7A7A"/>
+                <Button x:Name="button7" Content="Lisää lentoja" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button7_Click" BorderThickness="4"/>
                 <TextBlock x:Name="textBlock24" Text="Lisää syklejä (lkm)" FontSize="20" Padding="5" TextAlignment="Center"/>
-                <TextBox x:Name="textBox7" Text="" Width="225" Padding="5" Margin="0,10,0,10"/>
+                <TextBox x:Name="textBox7" Text="" Width="225" Padding="5" Margin="0,10,0,10" BorderThickness="4"/>
                 <TextBlock x:Name="textBlock25" Text="Valitse akku" FontSize="20" Padding="5" TextAlignment="Center"/>
-                <ListView x:Name="listBox3" Height="145" Width="225"
+                <ListView x:Name="listBox3" Height="130" Width="225" Padding="5" Margin="0,10,0,10"
                          ItemsSource="{x:Bind ViewModell.Akut}"
                           ItemTemplate="{StaticResource AkkuListDataTemplate}"
-                          ItemClick="listBox1_ItemClick"
-                          IsItemClickEnabled="True"/>
-                <Button x:Name="button8" Content="Lisää syklejä" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button8_Click"/>
+                          ItemClick="listBox3_ItemClick"
+                          IsItemClickEnabled="True" BorderThickness="2" BorderBrush="#FF7A7A7A" />
+                <Button x:Name="button8" Content="Lisää syklejä" Padding="10" Margin="0,10,0,10" HorizontalAlignment="Center" Click="button8_Click" BorderThickness="4"/>
             </StackPanel>
 
         </Grid>
@@ -138,26 +138,28 @@
                 <TextBlock x:Name="textBlock9" Canvas.Left="150" TextWrapping="Wrap" Text="Perustiedot" FontSize="20" Canvas.Top="140"/>
                 <TextBlock x:Name="textBlock11" Canvas.Left="695" TextWrapping="Wrap" Text="Korostusvärit" FontSize="20" Canvas.Top="140"/>
                 <TextBox x:Name="uusinumero" Canvas.Left="100" TextWrapping="Wrap" Text="sarjanro" Width="200" Canvas.Top="240"/>
-                <Button x:Name="button11" Width="25" Height="25" Canvas.Left="670" Canvas.Top="180" Background="#f08484"/>
-                <Button x:Name="button12" Width="25" Height="25" Canvas.Left="705" Canvas.Top="180" Background="#e678a9"/>
-                <Button x:Name="button13" Width="25" Height="25" Canvas.Left="740" Canvas.Top="180" Background="#c674db"/>
-                <Button x:Name="button14" Width="25" Height="25" Canvas.Left="775" Canvas.Top="180" Background="#887ad9"/>
-                <Button x:Name="button15" Width="25" Height="25" Canvas.Left="810" Canvas.Top="180" Background="#5c9ce0"/>
-                <Button x:Name="button16" Width="25" Height="25" Canvas.Left="670" Canvas.Top="215" Background="#7bc8e0"/>
-                <Button x:Name="button17" Width="25" Height="25" Canvas.Left="705" Canvas.Top="215" Background="#73e6cf"/>
-                <Button x:Name="button18" Width="25" Height="25" Canvas.Left="740" Canvas.Top="215" Background="#6be09e"/>
-                <Button x:Name="button19" Width="25" Height="25" Canvas.Left="775" Canvas.Top="215" Background="#69bf7a"/>
-                <Button x:Name="button20" Width="25" Height="25" Canvas.Left="810" Canvas.Top="215" Background="#a1db5e"/>
-                <Button x:Name="button21" Width="25" Height="25" Canvas.Left="670" Canvas.Top="250" Background="#d1ed85"/>
-                <Button x:Name="button22" Width="25" Height="25" Canvas.Left="705" Canvas.Top="250" Background="#ebeb63"/>
-                <Button x:Name="button23" Width="25" Height="25" Canvas.Left="740" Canvas.Top="250" Background="#edd853"/>
-                <Button x:Name="button24" Width="25" Height="25" Canvas.Left="775" Canvas.Top="250" Background="#ebbe36"/>
-                <Button x:Name="button25" Width="25" Height="25" Canvas.Left="810" Canvas.Top="250" Background="#f7a80a"/>
-                <Button x:Name="button26" Width="25" Height="25" Canvas.Left="670" Canvas.Top="285" Background="#f57608"/>
-                <Button x:Name="button27" Width="25" Height="25" Canvas.Left="705" Canvas.Top="285" Background="#f25627"/>
-                <Button x:Name="button28" Width="25" Height="25" Canvas.Left="740" Canvas.Top="285" Background="#e05151"/>
-                <Button x:Name="button29" Width="25" Height="25" Canvas.Left="775" Canvas.Top="285" Background="#b8b1b8"/>
-                <Button x:Name="button30" Width="25" Height="25" Canvas.Left="810" Canvas.Top="285" Background="#757575"/>
+                <Button x:Name="button11" Width="25" Height="25" Canvas.Left="670" Canvas.Top="180" Background="#f08484" Click="button11_Click"/>
+                <Button x:Name="button12" Width="25" Height="25" Canvas.Left="705" Canvas.Top="180" Background="#e678a9" Click="button12_Click"/>
+                <Button x:Name="button13" Width="25" Height="25" Canvas.Left="740" Canvas.Top="180" Background="#c674db" Click="button13_Click"/>
+                <Button x:Name="button14" Width="25" Height="25" Canvas.Left="775" Canvas.Top="180" Background="#887ad9" Click="button14_Click"/>
+                <Button x:Name="button15" Width="25" Height="25" Canvas.Left="810" Canvas.Top="180" Background="#5c9ce0" Click="button15_Click"/>
+                <Button x:Name="button16" Width="25" Height="25" Canvas.Left="670" Canvas.Top="215" Background="#7bc8e0" Click="button16_Click"/>
+                <Button x:Name="button17" Width="25" Height="25" Canvas.Left="705" Canvas.Top="215" Background="#73e6cf" Click="button17_Click"/>
+                <Button x:Name="button18" Width="25" Height="25" Canvas.Left="740" Canvas.Top="215" Background="#6be09e" Click="button18_Click"/>
+                <Button x:Name="button19" Width="25" Height="25" Canvas.Left="775" Canvas.Top="215" Background="#69bf7a" Click="button19_Click"/>
+                <Button x:Name="button20" Width="25" Height="25" Canvas.Left="810" Canvas.Top="215" Background="#a1db5e" Click="button20_Click"/>
+                <Button x:Name="button21" Width="25" Height="25" Canvas.Left="670" Canvas.Top="250" Background="#d1ed85" Click="button21_Click"/>
+                <Button x:Name="button22" Width="25" Height="25" Canvas.Left="705" Canvas.Top="250" Background="#ebeb63" Click="button22_Click"/>
+                <Button x:Name="button23" Width="25" Height="25" Canvas.Left="740" Canvas.Top="250" Background="#edd853" Click="button23_Click"/>
+                <Button x:Name="button24" Width="25" Height="25" Canvas.Left="775" Canvas.Top="250" Background="#ebbe36" Click="button24_Click"/>
+                <Button x:Name="button25" Width="25" Height="25" Canvas.Left="810" Canvas.Top="250" Background="#f7a80a" Click="button25_Click"/>
+                <Button x:Name="button26" Width="25" Height="25" Canvas.Left="670" Canvas.Top="285" Background="#f57608" Click="button26_Click"/>
+                <Button x:Name="button27" Width="25" Height="25" Canvas.Left="705" Canvas.Top="285" Background="#f25627" Click="button27_Click"/>
+                <Button x:Name="button28" Width="25" Height="25" Canvas.Left="740" Canvas.Top="285" Background="#e05151" Click="button28_Click"/>
+                <Button x:Name="button29" Width="25" Height="25" Canvas.Left="775" Canvas.Top="285" Background="#b8b1b8" Click="button29_Click"/>
+                <Button x:Name="button30" Width="25" Height="25" Canvas.Left="810" Canvas.Top="285" Background="#757575" Click="button30_Click"/>
+                <Rectangle x:Name="kopt_varivalitsin" Height="50" Canvas.Left="731" Stroke="Black" Canvas.Top="375" Width="50"/>
+                <TextBlock x:Name="textBlock20" Canvas.Left="707" TextWrapping="Wrap" Text="Valittu väri" FontSize="20" Canvas.Top="335"/>
             </Canvas>
         </Border>
 
@@ -171,28 +173,30 @@
                 <TextBlock x:Name="textBlock27" Canvas.Left="150" TextWrapping="Wrap" Text="Perustiedot" FontSize="20" Canvas.Top="140"/>
                 <TextBlock x:Name="textBlock28" Canvas.Left="695" TextWrapping="Wrap" Text="Korostusvärit" FontSize="20" Canvas.Top="140"/>
                 <TextBox x:Name="uusipvm" Canvas.Left="100" TextWrapping="Wrap" Text="hankinta pvm" Width="200" Canvas.Top="240"/>
-                <TextBox x:Name="uusijannite" Canvas.Left="100" TextWrapping="Wrap" Text="jännite" Width="200" Canvas.Top="300"/>
-                <TextBox x:Name="uusikapasiteetti" Canvas.Left="100" TextWrapping="Wrap" Text="kapasiteetti" Width="200" Canvas.Top="360"/>
-                <Button x:Name="button33" Width="25" Height="25" Canvas.Left="670" Canvas.Top="180" Background="#f08484"/>
-                <Button x:Name="button34" Width="25" Height="25" Canvas.Left="705" Canvas.Top="180" Background="#e678a9"/>
-                <Button x:Name="button35" Width="25" Height="25" Canvas.Left="740" Canvas.Top="180" Background="#c674db"/>
-                <Button x:Name="button36" Width="25" Height="25" Canvas.Left="775" Canvas.Top="180" Background="#887ad9"/>
-                <Button x:Name="button37" Width="25" Height="25" Canvas.Left="810" Canvas.Top="180" Background="#5c9ce0"/>
-                <Button x:Name="button38" Width="25" Height="25" Canvas.Left="670" Canvas.Top="215" Background="#7bc8e0"/>
-                <Button x:Name="button39" Width="25" Height="25" Canvas.Left="705" Canvas.Top="215" Background="#73e6cf"/>
-                <Button x:Name="button40" Width="25" Height="25" Canvas.Left="740" Canvas.Top="215" Background="#6be09e"/>
-                <Button x:Name="button41" Width="25" Height="25" Canvas.Left="775" Canvas.Top="215" Background="#69bf7a"/>
-                <Button x:Name="button42" Width="25" Height="25" Canvas.Left="810" Canvas.Top="215" Background="#a1db5e"/>
-                <Button x:Name="button43" Width="25" Height="25" Canvas.Left="670" Canvas.Top="250" Background="#d1ed85"/>
-                <Button x:Name="button44" Width="25" Height="25" Canvas.Left="705" Canvas.Top="250" Background="#ebeb63"/>
-                <Button x:Name="button45" Width="25" Height="25" Canvas.Left="740" Canvas.Top="250" Background="#edd853"/>
-                <Button x:Name="button46" Width="25" Height="25" Canvas.Left="775" Canvas.Top="250" Background="#ebbe36"/>
-                <Button x:Name="button47" Width="25" Height="25" Canvas.Left="810" Canvas.Top="250" Background="#f7a80a"/>
-                <Button x:Name="button48" Width="25" Height="25" Canvas.Left="670" Canvas.Top="285" Background="#f57608"/>
-                <Button x:Name="button49" Width="25" Height="25" Canvas.Left="705" Canvas.Top="285" Background="#f25627"/>
-                <Button x:Name="button50" Width="25" Height="25" Canvas.Left="740" Canvas.Top="285" Background="#e05151"/>
-                <Button x:Name="button51" Width="25" Height="25" Canvas.Left="775" Canvas.Top="285" Background="#b8b1b8"/>
-                <Button x:Name="button52" Width="25" Height="25" Canvas.Left="810" Canvas.Top="285" Background="#757575"/>
+                <TextBox x:Name="uusijannite" Canvas.Left="100" TextWrapping="Wrap" Text="jännite (V)" Width="200" Canvas.Top="300"/>
+                <TextBox x:Name="uusikapasiteetti" Canvas.Left="100" TextWrapping="Wrap" Text="kapasiteetti (mAh)" Width="200" Canvas.Top="360"/>
+                <Button x:Name="button33" Width="25" Height="25" Canvas.Left="670" Canvas.Top="180" Background="#f08484" Click="button33_Click"/>
+                <Button x:Name="button34" Width="25" Height="25" Canvas.Left="705" Canvas.Top="180" Background="#e678a9" Click="button34_Click"/>
+                <Button x:Name="button35" Width="25" Height="25" Canvas.Left="740" Canvas.Top="180" Background="#c674db" Click="button35_Click"/>
+                <Button x:Name="button36" Width="25" Height="25" Canvas.Left="775" Canvas.Top="180" Background="#887ad9" Click="button36_Click"/>
+                <Button x:Name="button37" Width="25" Height="25" Canvas.Left="810" Canvas.Top="180" Background="#5c9ce0" Click="button37_Click"/>
+                <Button x:Name="button38" Width="25" Height="25" Canvas.Left="670" Canvas.Top="215" Background="#7bc8e0" Click="button38_Click"/>
+                <Button x:Name="button39" Width="25" Height="25" Canvas.Left="705" Canvas.Top="215" Background="#73e6cf" Click="button39_Click"/>
+                <Button x:Name="button40" Width="25" Height="25" Canvas.Left="740" Canvas.Top="215" Background="#6be09e" Click="button40_Click"/>
+                <Button x:Name="button41" Width="25" Height="25" Canvas.Left="775" Canvas.Top="215" Background="#69bf7a" Click="button41_Click"/>
+                <Button x:Name="button42" Width="25" Height="25" Canvas.Left="810" Canvas.Top="215" Background="#a1db5e" Click="button42_Click"/>
+                <Button x:Name="button43" Width="25" Height="25" Canvas.Left="670" Canvas.Top="250" Background="#d1ed85" Click="button43_Click"/> 
+                <Button x:Name="button44" Width="25" Height="25" Canvas.Left="705" Canvas.Top="250" Background="#ebeb63" Click="button44_Click"/>
+                <Button x:Name="button45" Width="25" Height="25" Canvas.Left="740" Canvas.Top="250" Background="#edd853" Click="button45_Click"/>
+                <Button x:Name="button46" Width="25" Height="25" Canvas.Left="775" Canvas.Top="250" Background="#ebbe36" Click="button46_Click"/>
+                <Button x:Name="button47" Width="25" Height="25" Canvas.Left="810" Canvas.Top="250" Background="#f7a80a" Click="button47_Click"/>
+                <Button x:Name="button48" Width="25" Height="25" Canvas.Left="670" Canvas.Top="285" Background="#f57608" Click="button48_Click"/>
+                <Button x:Name="button49" Width="25" Height="25" Canvas.Left="705" Canvas.Top="285" Background="#f25627" Click="button49_Click"/>
+                <Button x:Name="button50" Width="25" Height="25" Canvas.Left="740" Canvas.Top="285" Background="#e05151" Click="button50_Click"/>
+                <Button x:Name="button51" Width="25" Height="25" Canvas.Left="775" Canvas.Top="285" Background="#b8b1b8" Click="button51_Click"/>
+                <Button x:Name="button52" Width="25" Height="25" Canvas.Left="810" Canvas.Top="285" Background="#757575" Click="button52_Click"/>
+                <Rectangle x:Name="akun_varivalitsin" Height="50" Canvas.Left="731" Stroke="Black" Canvas.Top="375" Width="50"/>
+                <TextBlock x:Name="textBlock21" Canvas.Left="707" TextWrapping="Wrap" Text="Valittu väri" FontSize="20" Canvas.Top="335"/>
             </Canvas>
         </Border>
 
