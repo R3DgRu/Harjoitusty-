@@ -14,7 +14,7 @@ using System.Runtime.CompilerServices;
 namespace Lentopäiväkirja.Model
 {
     /// <summary>
-    /// Tämä luokka säilöö helikoptereiden tietoja.
+    /// Tämä luokka säilöö helikoptereiden tietoja
     /// </summary>
     public class Helikopteri : INotifyPropertyChanged
     {
@@ -40,7 +40,7 @@ namespace Lentopäiväkirja.Model
         public int pHihna { get; set; }
 
         /// <summary>
-        /// Tämä luokka säilöö helikopterien view model dataa.
+        /// Tämä luokka säilöö helikopterien view model dataa
         /// </summary>
         public class HelikopteriViewModel
         {

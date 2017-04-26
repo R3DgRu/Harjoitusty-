@@ -383,13 +383,13 @@ namespace Lentopäiväkirja
             try
             {
                 Akku akku = (Akku)listBox3.SelectedItem;
-                int value10 = 0; // määrittelee value10 muuttujan
-                value10 = Convert.ToInt32(textBox7.Text); // ottaa textbox7:sta merkkijonon ja muuttaa sen numeroiksi ja tunkee value10 muuttujaan
-                int value11 = 0; // määrittelee value11 muuttujan
-                value11 = Convert.ToInt32(textBlock19.Text); // ottaa textblock19:sta merkkijonon ja muuttaa sen numeroiksi ja tunkee value11 muuttujaan
-                value10 = value11 + value10; // laskee yhteen molempien muuttujien arvot ja tunkee ne lopuksi value10 muuttujaan
-                akku.syklit = value10; // laittaa akun sykleihin value10:n sisältämän arvon
-                textBlock19.Text = akku.syklit.ToString(); // muuttaa akun syklit merkkijonoksi ja sijoittaa ne textblock19:sta
+                int value10 = 0;
+                value10 = Convert.ToInt32(textBox7.Text);
+                int value11 = 0;
+                value11 = Convert.ToInt32(textBlock19.Text);
+                value10 = value11 + value10;
+                akku.syklit = value10;
+                textBlock19.Text = akku.syklit.ToString();
 
                 ViewModell.PaivitaAkku();
             }
@@ -430,203 +430,203 @@ namespace Lentopäiväkirja
         // VÄRINVALINNAT HELIKOPTEREIHIN
         private void button11_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 240, 132, 132));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 240, 132, 132));
         }
 
         private void button12_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 230, 120, 169));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 230, 120, 169));
         }
 
         private void button13_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 198, 116, 219));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 198, 116, 219));
         }
 
         private void button14_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 136, 122, 217));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 136, 122, 217));
         }
 
         private void button15_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 92, 156, 224));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 92, 156, 224));
         }
 
         private void button16_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 123, 200, 224));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 123, 200, 224));
         }
 
         private void button17_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 115, 230, 207));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 115, 230, 207));
         }
 
         private void button18_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 107, 224, 158));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 107, 224, 158));
         }
 
         private void button19_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 105, 191, 122));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 105, 191, 122));
         }
 
         private void button20_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 161, 219, 94));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 161, 219, 94));
         }
 
         private void button21_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 209, 237, 133));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 209, 237, 133));
         }
 
         private void button22_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 235, 235, 99));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 235, 235, 99));
         }
 
         private void button23_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 237, 216, 83));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 237, 216, 83));
         }
 
         private void button24_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 235, 190, 54));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 235, 190, 54));
         }
 
         private void button25_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 247, 168, 10));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 247, 168, 10));
         }
 
         private void button26_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 245, 118, 8));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 245, 118, 8));
         }
 
         private void button27_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 242, 86, 39));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 242, 86, 39));
         }
 
         private void button28_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 224, 81, 81));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 224, 81, 81));
         }
 
         private void button29_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 184, 177, 184));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 184, 177, 184));
         }
 
         private void button30_Click(object sender, RoutedEventArgs e)
         {
-            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 117, 117, 117));
+            kopt_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 117, 117, 117));
         }
 
         // VÄRINVALINNAT AKKUIHIN
         private void button33_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 240, 132, 132));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 240, 132, 132));
         }
 
         private void button34_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 230, 120, 169));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 230, 120, 169));
         }
 
         private void button35_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 198, 116, 219));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 198, 116, 219));
         }
 
         private void button36_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 136, 122, 217));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 136, 122, 217));
         }
 
         private void button37_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 92, 156, 224));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 92, 156, 224));
         }
 
         private void button38_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 123, 200, 224));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 123, 200, 224));
         }
 
         private void button39_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 115, 230, 207));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 115, 230, 207));
         }
 
         private void button40_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 107, 224, 158));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 107, 224, 158));
         }
 
         private void button41_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 105, 191, 122));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 105, 191, 122));
         }
 
         private void button42_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 161, 219, 94));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 161, 219, 94));
         }
 
         private void button43_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 209, 237, 133));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 209, 237, 133));
         }
 
         private void button44_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 235, 235, 99));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 235, 235, 99));
         }
 
         private void button45_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 237, 216, 83));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 237, 216, 83));
         }
 
         private void button46_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 235, 190, 54));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 235, 190, 54));
         }
 
         private void button47_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 247, 168, 10));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 247, 168, 10));
         }
 
         private void button48_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 245, 118, 8));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 245, 118, 8));
         }
 
         private void button49_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 242, 86, 39));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 242, 86, 39));
         }
 
         private void button50_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 224, 81, 81));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 224, 81, 81));
         }
 
         private void button51_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 184, 177, 184));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 184, 177, 184));
         }
 
         private void button52_Click(object sender, RoutedEventArgs e)
         {
-            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(100, 117, 117, 117));
+            akun_varivalitsin.Fill = new SolidColorBrush(Color.FromArgb(200, 117, 117, 117));
         }
     }
 }

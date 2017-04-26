@@ -14,7 +14,7 @@ using System.Runtime.CompilerServices;
 namespace Lentopäiväkirja.Model
 {
     /// <summary>
-    /// Tämä luokka säilöö akkujen tietoja.
+    /// Tämä luokka säilöö akkujen tietoja
     /// </summary>
     public class Akku : INotifyPropertyChanged
     {
@@ -39,7 +39,7 @@ namespace Lentopäiväkirja.Model
         public int syklit { get; set; }
 
         /// <summary>
-        /// Tämä luokka säilöö akkujen view modell dataa.
+        /// Tämä luokka säilöö akkujen view modell dataa
         /// </summary>
         public class AkkuViewModell
         {
