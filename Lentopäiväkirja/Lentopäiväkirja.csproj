@@ -113,8 +113,13 @@
     <None Include="Lentopäiväkirja_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\iso_levea_kuvake_2480x1200.png" />
+    <Content Include="Assets\iso_levea_kuvake.scale-400.png" />
+    <Content Include="Assets\iso_levea_kuvake.scale-100.png" />
+    <Content Include="Assets\iso_levea_kuvake.scale-125.png" />
+    <Content Include="Assets\iso_levea_kuvake.scale-150.png" />
+    <Content Include="Assets\iso_levea_kuvake.scale-200.png" />
     <Content Include="Assets\kuvake600x600.png" />
+    <Content Include="Assets\kuvake_100x100.png" />
     <Content Include="Assets\kuvake_1240x1240.scale-100.png" />
     <Content Include="Assets\kuvake_1240x1240.scale-200.png" />
     <Content Include="Assets\kuvake_1240x1240.scale-400.png" />
@@ -122,7 +127,11 @@
     <Content Include="Assets\kuvake_142x142.png" />
     <Content Include="Assets\kuvake_150x150.png" />
     <Content Include="Assets\kuvake_176x176.png" />
-    <Content Include="Assets\kuvake_200x200.png" />
+    <Content Include="Assets\kuvake_200x200.scale-100.png" />
+    <Content Include="Assets\kuvake_200x200.scale-125.png" />
+    <Content Include="Assets\kuvake_200x200.scale-150.png" />
+    <Content Include="Assets\kuvake_200x200.scale-200.png" />
+    <Content Include="Assets\kuvake_200x200.scale-400.png" />
     <Content Include="Assets\kuvake_284x284.scale-100.png" />
     <Content Include="Assets\kuvake_284x284.scale-200.png" />
     <Content Include="Assets\kuvake_284x284.scale-400.png" />
@@ -130,10 +139,15 @@
     <Content Include="Assets\kuvake_310x150.png" />
     <Content Include="Assets\kuvake_310x310.png" />
     <Content Include="Assets\kuvake_44x44.png" />
+    <Content Include="Assets\kuvake_50x50.png" />
+    <Content Include="Assets\kuvake_50x50.scale-100.png" />
     <Content Include="Assets\kuvake_620x300.png" />
     <Content Include="Assets\kuvake_620x620.png" />
+    <Content Include="Assets\kuvake_63x63.png" />
     <Content Include="Assets\kuvake_71x71.png" />
+    <Content Include="Assets\kuvake_75x75.png" />
     <Content Include="Assets\kuvake_88x88.png" />
+    <Content Include="Assets\kuvake_96x96.png" />
     <Content Include="Assets\kuvake_96x96.scale-400.png" />
     <Content Include="Assets\SplashScreen.scale-400.png" />
     <Content Include="Assets\Square150x150Logo.scale-100.png" />
